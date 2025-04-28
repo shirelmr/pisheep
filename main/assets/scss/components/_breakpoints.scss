@@ -1,0 +1,130 @@
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 300px){
+   .container{
+      margin-inline: 1rem;
+   }
+
+   .home__title{
+      font-size: 3rem;
+
+      & span{
+         font-size: 2.5rem;
+      }
+   }
+}
+
+@media screen and (min-width: 350px) and (max-height: 680px){
+   .home{
+      &__container{
+         height: 750px;
+      }
+      &__images div{
+         width: 100%;
+      }
+   }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px){
+   .home{
+      &__images div{
+         width: 100%;
+      }
+      &__ship{
+         width: 400px;
+      }
+   }
+}
+
+/* For large devices */
+@media screen and (min-width: 1150px){
+   .container{
+      margin-inline: auto;
+   }
+
+   .nav{
+      height: calc(var(--header-height) + 2rem);
+
+      &__toggle,
+      &__close{
+         display: none;
+      }
+      &__list{
+         flex-direction: row;
+         column-gap: 4.5rem;
+      }
+   }
+
+   .home{
+      &__container{
+         height: 860px; /* Comment for full screen */
+         padding-top: 11.5rem;
+      }
+      &__title{
+         margin-bottom: 3rem;
+      }
+      &__button,
+      &__button::after{
+         border-width: 4px;
+      }
+      &__button::after{
+         bottom: -12px;
+      }
+      &__cloud-1,
+      &__cloud-2{
+         width: 250px;
+      }
+      &__cloud-2{
+         top: 20rem;
+      }
+      &__images div{
+         height: 375px;
+         background-size: 100vw 100%;
+      }
+      &__waves-1{
+         bottom: -2.5rem;
+      }
+      &__waves-2{
+         bottom: -2rem;
+      }
+      &__waves-3{
+         bottom: 5rem;
+      }
+      &__ship{
+         width: 630px;
+         left: 30rem;
+      }
+   }
+
+   /* Animated waves desktop */
+   @keyframes waves-1{
+      0% {
+         background-position-x: 100vw;
+      }
+      100% {
+         background-position-x: 0;
+      }
+   }
+
+   @keyframes waves-2{
+      0% {
+         background-position-x: 0;
+      }
+      100% {
+         background-position-x: 100vw;
+      }
+   }
+}
+
+@media screen and (min-width: 1150px) and (min-height: 1000px){
+   .home{
+      &__container{
+         display: grid;
+         height: 100vh;
+      }
+      &__data{
+         align-self: center;
+      }
+   }
+}

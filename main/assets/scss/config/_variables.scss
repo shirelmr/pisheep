@@ -1,0 +1,41 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Jost:wght@500&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root{
+   --header-height: 3.5rem;
+
+   /*========== Colors ==========*/
+   /*Color mode HSL(hue, saturation, lightness)*/
+   --first-color: hsl(40, 24%, 64%);
+   --white-color: hsl(40, 31%, 89%);
+   --black-color: hsl(40, 14%, 14%);
+   --body-color: hsl(40, 33%, 86%);
+
+   /*========== Font and typography ==========*/
+   /*.5rem = 8px | 1rem = 16px ...*/
+   --body-font: "Jost", sans-serif;
+   --second-font: "Cormorant Garamond", serif;
+
+   --biggest-font-size: 3.5rem;
+   --bigger-font-size: 2.75rem;
+   --big-font-size: 1.25rem;
+   --normal-font-size: .938rem;
+
+   // Responsive typography
+   @media screen and (min-width: 1150px){
+      --biggest-font-size: 6rem;
+      --bigger-font-size: 4.5rem;
+      --big-font-size: 2rem;
+      --normal-font-size: 1rem;
+   }
+
+	/*========== Font weight ==========*/
+   --font-medium: 500;
+   --font-semi-bold: 600;
+   --font-bold: 700;
+
+	/*========== z index ==========*/
+   --z-tooltip: 10;
+   --z-fixed: 100;
+}

@@ -1,0 +1,115 @@
+/* General */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(229, 229, 229);
+    overflow: hidden; /*evita el scroll*/
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 70px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px; 
+    font-weight: bold; 
+    color: #333;
+    
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bold;
+    font-style: normal;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    font-size:large;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-icon {
+    font-size: 21px;
+    cursor: pointer;
+}
+
+/* Contenedor del mapa */
+.map-container {
+    position: relative;
+    width: 100vw; /*coupa todo el ancho de pantalla*/
+    height: 91.9vh; /*coupa todo el alto de pantalla*/
+}
+
+.map_china {
+    width: 95%;
+    height: 100%;
+    object-fit: cover; /*que la img cubra toda la pantalla*/
+    border-radius: 5px;
+}
+
+/* Banderas como botones */
+.img {
+    position: absolute;
+    width: 100px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.img img {
+    width: 190%;
+    border-radius: 5px;
+    /*box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);*/
+}
+
+.img:hover {
+    transform: scale(1.1);
+}
+
+.arbol { top: 20%; left: 43%; }
+.arroz { top: 50%; left: 37%; }
+.dragon { top: 54%; left: 6.8%; }
+.flor { top: 27%; left: 10%; }
+.lampara { top: 76%; left: 38%; }
+.muralla { top: 28%; left: 33%; }
+.panda { top: 42%; left: 19%; }
+.platon { top: 64%; left: 47%; }
+.sensei { top: 5%; left: 53%; }
+.templo { top: 57%; left: 27%; }
+
+/* Moneda y dinero */
+.currency {
+    position: absolute; /* Lo mantiene dentro del mapa */
+    bottom: 5%; /* Ajusta la posición vertical */
+    left: 2%; /* Ajusta la posición horizontal */
+    display: flex; /* Para alinear la moneda y el texto */
+    align-items: center;
+    /*background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.currency img {
+    width: 40px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.currency {
+    position: absolute;
+    bottom: 20px; 
+    left: 20px;
+    font-weight: bold;
+}

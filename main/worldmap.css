@@ -1,0 +1,117 @@
+/* General */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /*evita el scroll*/
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 70px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px; 
+    font-weight: bold; 
+    color: #333;
+    
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bold;
+    font-style: normal;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    font-size:large;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-icon {
+    font-size: 21px;
+    cursor: pointer;
+}
+
+/* Contenedor del mapa */
+.map-container {
+    position: relative;
+    width: 100vw; /*coupa todo el ancho de pantalla*/
+    height: 91.9vh; /*coupa todo el alto de pantalla*/
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*que la img cubra toda la pantalla*/
+    border-radius: 5px;
+}
+
+/* Banderas como botones */
+.flag {
+    position: absolute;
+    width: 55px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.flag img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.flag:hover {
+    transform: scale(1.1);
+}
+
+/* Posicionamiento de las banderas */
+.mexico { top: 50%; left: 20%; }
+.usa { top: 41%; left: 21%; }
+.uk { top: 29%; left: 44%; }
+.france { top: 35%; left: 46.5%; }
+.brazil { top: 70%; left: 33%; }
+.egypt { top: 48%; left: 52%; }
+.saudi { top: 49%; left: 57.5%; }
+.india { top: 52%; left: 65%; }
+.china { top: 40%; left: 71%; }
+.japan { top: 40%; left: 81%; }
+.russia { top: 27%; left: 67%; }
+.australia { top: 77%; left: 78%; }
+
+/* Moneda y dinero */
+.currency {
+    position: absolute; /* Lo mantiene dentro del mapa */
+    bottom: 5%; /* Ajusta la posición vertical */
+    left: 2%; /* Ajusta la posición horizontal */
+    display: flex; /* Para alinear la moneda y el texto */
+    align-items: center;
+    /*background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.currency img {
+    width: 40px;
+    height: auto;
+    margin-right: 8px;
+}
+
+.currency {
+    position: absolute;
+    bottom: 20px; /* Ajustado para pantalla completa */
+    left: 20px;
+    font-weight: bold;
+}

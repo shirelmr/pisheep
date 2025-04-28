@@ -1,0 +1,109 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(229, 229, 229);
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 70px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    font-size: large;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-icon {
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.map-container {
+    position: relative;
+    width: 100vw;
+    height: 91.9vh;
+}
+
+.map_mx {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.img {
+    position: absolute;
+    width: 140px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.img img {
+    width: 140px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.img:hover {
+    transform: scale(1.1);
+}
+
+/* Posiciones afinadas */
+.camello { top: 56%; left: 23%;  }
+.esfinge { top: 32%; left: 14%; }
+.jarron { top: 9%; left: 4%; }
+.mujer { top: 15%; left: 23%; }
+.pergamino { top: 55%; left: 10%; }
+.piramides { top: 40%; left: 29%; }
+.roca { top: 80%; left: 22%; }
+.templo { top: 70%; left: 2%; }
+.tut { top: 32%; left: 3%; }
+.gato { top: 70%; left: 35%; }
+
+
+.currency {
+    position: absolute; /* Lo mantiene dentro del mapa */
+    bottom: 5%; /* Ajusta la posición vertical */
+    left: 2%; /* Ajusta la posición horizontal */
+    display: flex; /* Para alinear la moneda y el texto */
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+  
+  .currency img {
+    width: 40px;
+    height: auto;
+    margin-right: 8px;
+  }
+  
+  .currency {
+    position: absolute;
+    bottom: 20px; 
+    left: 20px;
+    font-weight: bold;
+  }

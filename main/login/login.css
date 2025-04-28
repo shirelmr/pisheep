@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    background: #b5d6d6;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen */
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    z-index: 2; /* Para que esté encima de la imagen */
+}
+
+h2 {
+    margin: 40px 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #f5ede3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Ajusta la imagen para que quede pegada abajo */
+.waves {
+    width: 100vw;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1; /* Asegura que no tape el contenido */
+}
+
+/* Estilos para el enlace de registro */
+.signup-link {
+    text-decoration: none;
+    color: #f9c00d;
+    font-weight: bold;
+}
+
+.signup-link:hover {
+    text-decoration: underline;
+}
+
