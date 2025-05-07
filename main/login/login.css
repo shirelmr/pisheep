@@ -1,9 +1,9 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: #b5d6d6;
     height: 100vh;
     display: flex;
-    flex-direction: column; /* Asegura que los elementos se apilen */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
@@ -11,31 +11,62 @@ body {
 }
 
 .container {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 350px;
     text-align: center;
-    z-index: 2; /* Para que esté encima de la imagen */
+    z-index: 2;
 }
 
 h2 {
-    margin: 40px 0;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.1rem;
 }
 
+h4 {
+    margin: 0.8rem 0 0.3rem;
+    color: #444;
+    font-weight: 300;
+    font-size:1rem ;
+}
+
+
 input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+    width: 90%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #f9c00d;
+    outline: none;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background: #f5ede3;
+    width: 80%;
+    padding: 0.8rem;
+    background: #f9c00d;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.7rem;
     cursor: pointer;
-    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
+
+button:hover {
+    background: #e6ae00;
+}
+
 
 /* Ajusta la imagen para que quede pegada abajo */
 .waves {
@@ -52,9 +83,16 @@ button {
     text-decoration: none;
     color: #f9c00d;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .signup-link:hover {
+    color: #e6ae00;
     text-decoration: underline;
 }
 
+/* Centra el texto final */
+.container h4:last-of-type {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
