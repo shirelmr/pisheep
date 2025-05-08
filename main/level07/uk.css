@@ -38,6 +38,26 @@ nav a {
     font-weight: bold;
 }
 
+.return-button {
+    position: absolute;
+    bottom: 20px;
+    right: 170px;
+    background-color: #f9c00d;
+    color: rgb(25, 24, 24);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.return-button:hover {
+    background-color: #e6ae00;
+}
+
 .user-icon {
     font-size: 21px;
     cursor: pointer;
@@ -93,17 +113,18 @@ nav a {
     align-items: center;
     padding: 10px 15px;
     border-radius: 10px;
-  }
-  
-  .currency img {
-    width: 40px;
+}
+
+.currency img {
+    width: 50px;
     height: auto;
     margin-right: 8px;
-  }
-  
-  .currency {
+}
+
+.currency {
     position: absolute;
     bottom: 20px; 
     left: 20px;
     font-weight: bold;
-  }
+    font-size: 1.2rem;
+}
