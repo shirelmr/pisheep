@@ -79,17 +79,37 @@ html, body {
   }
   
   /* Posicionamiento de las banderas */
-  .antifaz { top: 35%; left: 8%; }
+  .antifaz { top: 28%; left: 9%; }
   .ave { top: 17%; left: 16%; }
-  .balon { top: 26%; left: 23%; }
+  .balon { top: 29%; left: 25%; }
   .cristo { top: 45%; left: 26%; }
   .guitarra { top: 32%; left: 40%; }
   .maracas { top: 50%; left: 37%; }
-  .pez { top: 63%; left: 29%; }
+  .pez { top: 66%; left: 29%; }
   .tambor { top: 20%; left: 35%; }
-  .tapir { top: 15%; left: 5%; }
-  .taza { top: 85%; left: 25%; }
+  .tapir { top: 13%; left: 7%; }
+  .taza { top: 83%; left: 25%; }
   
+  .return-button {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    background-color: #f9c00d;
+    color: rgb(25, 24, 24);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.return-button:hover {
+    background-color: #e6ae00;
+}
+
   /* Moneda y dinero */
   .currency {
     position: absolute; /* Lo mantiene dentro del mapa */
@@ -113,4 +133,5 @@ html, body {
     bottom: 20px; 
     left: 20px;
     font-weight: bold;
+    font-size: 1.2rem;
   }

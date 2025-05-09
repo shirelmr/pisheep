@@ -79,18 +79,38 @@ html, body {
   }
   
   /* Posicionamiento de las banderas */
-  .orca { top: 35%; left: 8%; }
+  .orca { top: 35%; left: 10%; }
   .carne { top: 17%; left: 16%; }
   .desierto { top: 26%; left: 27%; }
   .cactus { top: 45%; left: 26%; }
-  .industria { top: 32%; left: 40%; }
+  .industria { top: 29%; left: 40%; }
   .cascada { top: 50%; left: 37%; }
   .tequila { top: 63%; left: 29%; }
-  .mosaico { top: 69%; left: 42%; }
+  .mosaico { top: 69%; left: 40%; }
   .queso { top: 82%; left: 48%; }
   .maracas { top: 83%; left: 59%; }
   .pyramid { top: 62%; left: 69%; }
   
+  .return-button {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    background-color: #f9c00d;
+    color: rgb(25, 24, 24);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.return-button:hover {
+    background-color: #e6ae00;
+}
+
   /* Moneda y dinero */
   .currency {
     position: absolute; /* Lo mantiene dentro del mapa */
@@ -114,4 +134,5 @@ html, body {
     bottom: 20px; 
     left: 20px;
     font-weight: bold;
+    font-size: 1.2rem;
   }

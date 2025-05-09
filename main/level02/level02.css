@@ -50,8 +50,8 @@ html, body {
   /* Contenedor del mapa */
   .map-container {
     position: relative;
-    width: 100vw; /*coupa todo el ancho de pantalla*/
-    height: 91.9vh; /*coupa todo el alto de pantalla*/
+    width: 97vw; /*coupa todo el ancho de pantalla*/
+    height: 95vh; /*coupa todo el alto de pantalla*/
   }
   
   .map_usa {
@@ -69,7 +69,7 @@ html, body {
   }
   
   .img img {
-    width: 140%;
+    width: 130%;
     border-radius: 5px;
     /*box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);*/
   }
@@ -80,16 +80,36 @@ html, body {
   
   /* Posicionamiento de las banderas */
   .bean { top: 25%; left: 50%; }
-  .dolar { top: 17%; left: 16%; }
-  .estatua { top: 26%; left: 65%; }
-  .hotdog { top: 40%; left: 35%; }
+  .dolar { top: 22%; left: 20%; }
+  .estatua { top: 26%; left: 57%; }
+  .hotdog { top: 37%; left: 38%; }
   .pizza { top: 50%; left: 50%; }
-  .puente { top: 40%; left: 5%; }
-  .rock { top: 40%; left: 20%; }
-  .sombrero { top: 65%; left: 35%; }
+  .puente { top: 35%; left: 11%; }
+  .rock { top: 40%; left: 24%; }
+  .sombrero { top: 58%; left: 35%; }
   .space { top: 2%; left: 8%; }
-  .taxi { top: 20%; left: 30%; }
+  .taxi { top: 10%; left: 34%; }
   
+  .return-button {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    background-color: #f9c00d;
+    color: rgb(25, 24, 24);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.return-button:hover {
+    background-color: #e6ae00;
+}
+
   /* Moneda y dinero */
   .currency {
     position: absolute; /* Lo mantiene dentro del mapa */
@@ -105,12 +125,14 @@ html, body {
   .currency img {
     width: 40px;
     height: auto;
-    margin-right: 8px;
+    margin-right: 11px;
+    margin-bottom: 8px;
   }
   
   .currency {
     position: absolute;
-    bottom: 20px; 
+    bottom: 30px; 
     left: 20px;
     font-weight: bold;
+    font-size: 1.2rem;
   }
