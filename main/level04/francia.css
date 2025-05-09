@@ -50,7 +50,7 @@ nav a {
 }
 
 .map_mx {
-    width: 90%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 5px;
@@ -73,21 +73,21 @@ nav a {
 }
 
 /* Posiciones afinadas */
-.vino { top: 27%; left: 4%;  }
-.arco { top: 37%; left: 19%; }
-.torre { top: 15%; left: 22%; }
+.vino { top: 27%; left: 10%;  }
+.arco { top: 33%; left: 21%; }
+.torre { top: 9%; left: 23%; }
 .iglesia { top: 20%; left: 35%; }
-.croissant { top: 50%; left: 13%; }
-.bolsa { top: 40%; left: 29%; }
-.perfume { top: 57%; left: 22%; }
-.scooter { top: 68%; left: 26%; }
+.croissant { top: 50%; left: 16%; }
+.bolsa { top: 40%; left: 32%; }
+.perfume { top: 54%; left: 25%; }
+.scooter { top: 71%; left: 22%; }
 .pan { top: 65%; left: 13%; }
-.cupcake { top: 65%; left: 35%; }
+.cupcake { top: 65%; left: 36%; }
 
 .return-button {
     position: absolute;
-    bottom: 20px;
-    right: 170px;
+    bottom: 40px;
+    right: 60px;
     background-color: #f9c00d;
     color: rgb(25, 24, 24);
     padding: 12px 20px;
@@ -117,9 +117,9 @@ nav a {
 }
 
 .currency img {
-    width: 50px;
+    width: 60px;
     height: auto;
-    margin-right: 8px;
+    margin-right: 1px;
 }
 
 .currency {

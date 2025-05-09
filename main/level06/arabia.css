@@ -74,16 +74,35 @@ nav a {
 
 /* Posiciones afinadas */
 .camellos { top: 56%; left: 23%;  }
-.casa { top: 32%; left: 15%; }
-.chocolatera { top: 9%; left: 4%; }
-.flower { top: 15%; left: 23%; }
-.food { top: 55%; left: 10%; }
-.kaaba { top: 40%; left: 29%; }
-.mosaico { top: 80%; left: 22%; }
-.paloma { top: 54%; left: 35%; }
-.persona { top: 32%; left: 3%; }
-.smooking { top: 70%; left: 35%; }
+.casa { top: 31%; left: 17%; }
+.chocolatera { top: 9%; left: 9%; }
+.flower { top: 18%; left: 24%; }
+.food { top: 55%; left: 13%; }
+.kaaba { top: 42%; left: 29%; }
+.mosaico { top: 75%; left: 21%; }
+.paloma { top: 58%; left: 34.5%; }
+.persona { top: 32%; left: 7%; }
+.smooking { top: 60%; left: 42%; }
 
+.return-button {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    background-color: #f9c00d;
+    color: rgb(25, 24, 24);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.return-button:hover {
+    background-color: #e6ae00;
+}
 
 .currency {
     position: absolute; /* Lo mantiene dentro del mapa */
@@ -93,17 +112,18 @@ nav a {
     align-items: center;
     padding: 10px 15px;
     border-radius: 10px;
-  }
-  
-  .currency img {
-    width: 40px;
+}
+
+.currency img {
+    width: 50px;
     height: auto;
     margin-right: 8px;
-  }
-  
-  .currency {
+}
+
+.currency {
     position: absolute;
     bottom: 20px; 
     left: 20px;
     font-weight: bold;
-  }
+    font-size: 1.2rem;
+}

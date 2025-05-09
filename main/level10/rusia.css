@@ -89,6 +89,26 @@ nav a {
 .taza { top: 13%; left: 52%; }
 .tetera { top: 32%; left: 43%; }
 
+.return-button {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    background-color: #f9c00d;
+    color: rgb(25, 24, 24);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.return-button:hover {
+    background-color: #e6ae00;
+}
+
 /* Moneda y dinero */
 .currency {
     position: absolute; /* Lo mantiene dentro del mapa */
@@ -112,4 +132,5 @@ nav a {
     bottom: 20px; 
     left: 20px;
     font-weight: bold;
+    font-size: 1.2rem;
 }
