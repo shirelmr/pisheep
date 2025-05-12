@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math Arena</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      background-image: url("fondo.png")
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    header {
+      font-family: "DM Serif Display", serif;;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    
+
+    .menu-item {
+      font-size: 25px;
+      cursor: pointer;
+      padding-left: 50px;
+    }
+
+    .user-icon {
+      font-size: 24px;
+      width: 50px;
+      margin-left: 2rem;
+    }
+
+    h1 {
+     font-family: 'Bangers',sans-serif;
+      font-size: 170px;
+      font-weight: bold;
+      color: #636363;
+      text-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 10%;
+    }
+
+    .battle-scene {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin: 40px 0;
+    }
+
+    .ramleft{
+      width: 450px;
+      height: auto;
+      margin-bottom: 17rem;
+      transform: rotate(0deg);
+      margin-left: -2rem;
+    }
+    .ramrigth{
+      width: 450px;
+      height: auto;
+      margin-bottom: 17rem;
+      transform: rotate(0deg);
+      margin-right: -2rem;
+    }
+    .humoleft{
+      position: absolute;
+      width: 250px;
+      height: auto;
+      margin-bottom: 10rem;
+      margin-right: 60rem;
+    }
+    .humoright{
+      position: absolute;
+      width: 250px;
+      height: auto;
+      margin-bottom: 10rem;
+      margin-left: 61rem;
+    }
+    .collision-effect {
+      font-size: 150px;
+      color: #ff4400;
+      position: absolute;
+      margin-bottom: 18rem;
+    }
+
+    .battle-button {
+      position: absolute;
+      background-color: #FFD700;
+      border: 8px solid #333;
+      border-radius: 350px;
+      font-size: 100px;
+      color: rgb(255, 255, 255);
+      padding: 25px 100px;
+      cursor: pointer;
+      box-shadow: 0 14px #685801;
+      font-family: "Luckiest Guy",cursive;
+      margin-top: 40rem;
+      
+    }
+
+    .battle-button:active {
+      box-shadow: 0 4px #ccac00;
+      transform: translateY(4px);
+    }
+
+    .back-button {
+      font-family: "DM Serif Display", serif;;
+      position: absolute;
+      bottom: 50px;
+      left: 90px;
+      background-color: white;
+      border: 5px solid #000000;
+      border-radius: 20px;
+      font-size: 30px;
+      padding: 5px 50px;
+      cursor: pointer;
+      box-shadow: 0 4px #000000;
+    }
+    .back-button:active{
+      box-shadow: 0 4px #ccac00;
+      transform: translateY(4px);
+    }
+
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="menu-item">avatar</span>
+      <span class="menu-item">shop</span>
+      <img src="usuario.png" alt="" class="user-icon"/>
+    </header>
+
+    <h1>MATH ARENA</h1>
+    
+    <div class="battle-scene">
+      <img src="ram-left.svg" alt="Carnero izquierdo" class="ramleft" />
+      <img src="ram-rigth.svg" alt="Carnero derecho" class="ramrigth"/>
+      <img src="humoleft.svg" alt="Humo izquierdo" class="humoleft"/>
+      <img src="humoright.svg" alt="Humo derecho" class="humoright"/>
+
+    </div>
+
+    <button class="battle-button">BATTLE</button>
+    
+    <button class="back-button"> < back</button>
+  </div>
+</body>
+</html>
