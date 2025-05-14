@@ -3,8 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-
-<head>
+<!--<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Menú de Tienda</title>
@@ -147,4 +146,80 @@
   .back-button:hover {
     background-color: #f0f0f0;
   }
+</style>
+-->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>π sheep</h1>
+    <nav>
+      <a href="../worldmap.html">home</a>
+      <a href="../worldmap.html" class="return-button"> Back </a>
+      <a href="math-arena.html">arena</a>
+      <a href="avatar.html">avatar</a>
+      <a href="shop.html">shop</a>
+      <div class="user-icon">👤</div>
+  </nav>
+  </header>
+  <div class="titulo">
+    <h1>TIENDA</h1>
+  </div>
+
+</body>
+</html>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(229, 229, 229);
+    overflow: hidden; /*evita el scroll*/
+}
+
+/* Encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 70px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px; 
+    font-weight: bold; 
+    color: #333;
+    
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bold;
+    font-style: normal;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    font-size:large;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h1 .titulo{
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 200px;
+}
 </style>
