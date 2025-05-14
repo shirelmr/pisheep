@@ -1,12 +1,13 @@
+/* General */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     background-color: rgb(229, 229, 229);
-    overflow: hidden;
 }
 
+  /* Encabezado */
 header {
     display: flex;
     justify-content: space-between;
@@ -15,20 +16,23 @@ header {
     background-color: white;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 24px; 
+    font-weight: bold; 
     color: #333;
+    min-width: 1500px;
 }
 
 h1 {
     font-size: 25px;
     font-weight: bold;
+    font-style: normal;
+    min-width: 1000px;
 }
 
 nav {
     display: flex;
     gap: 20px;
-    font-size: large;
+    font-size:large;
 }
 
 nav a {
@@ -39,32 +43,43 @@ nav a {
 }
 
 .user-icon {
-    font-size: 21px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* opcional, si quieres que se vea redondo */
+    object-fit: cover;
 }
 
 .map-container {
     position: relative;
     width: 100vw;
-    height: 91.9vh;
+    height: 92vh;
+    min-width: 1600px;
 }
 
-.map_mx {
+.map_francia {
     width: 100%;
     height: 100%;
-    object-fit: cover;
     border-radius: 5px;
 }
 
+  /* img como botones */
 .img {
     position: absolute;
-    width: 140px;
+    width: 100px;
     transition: transform 0.2s ease-in-out;
 }
 
 .img img {
     width: 140px;
-    height: auto;
     border-radius: 5px;
 }
 
@@ -73,21 +88,23 @@ nav a {
 }
 
 /* Posiciones afinadas */
-.vino { top: 27%; left: 10%;  }
-.arco { top: 33%; left: 21%; }
-.torre { top: 9%; left: 23%; }
+.vino { top: 27%; left: 14%;  }
+.arco { top: 33%; left: 24%; }
+.torre { top: 9%; left: 26%; }
 .iglesia { top: 20%; left: 35%; }
-.croissant { top: 50%; left: 16%; }
-.bolsa { top: 40%; left: 32%; }
-.perfume { top: 54%; left: 25%; }
-.scooter { top: 71%; left: 22%; }
-.pan { top: 65%; left: 13%; }
-.cupcake { top: 65%; left: 36%; }
+.croissant { top: 50%; left: 18%; }
+.bolsa { top: 40%; left: 33%; }
+.perfume { top: 56%; left: 28%; }
+.scooter { top: 71%; left: 23%; }
+.pan { top: 65%; left: 15%; }
+.cupcake { top: 64%; left: 37%; }
 
 .return-button {
-    position: absolute;
-    bottom: 40px;
-    right: 60px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    bottom: -760px;
+    right: 0px;
+    left: 1500px;
     background-color: #f9c00d;
     color: rgb(25, 24, 24);
     padding: 12px 20px;
@@ -117,15 +134,15 @@ nav a {
 }
 
 .currency img {
-    width: 60px;
+    width: 40px;
     height: auto;
-    margin-right: 1px;
+    margin-right: 8px;
 }
-
 .currency {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
-    bottom: 20px; 
+    bottom: 20px; /* Ajustado para pantalla completa */
     left: 20px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }

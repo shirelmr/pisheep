@@ -29,8 +29,8 @@ h1 {
 
 nav {
     display: flex;
+    align-items: center;
     gap: 20px;
-    font-size:large;
 }
 
 nav a {
@@ -41,8 +41,19 @@ nav a {
 }
 
 .user-icon {
-    font-size: 21px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* opcional, si quieres que se vea redondo */
+    object-fit: cover;
 }
 
 /* Contenedor del mapa */
@@ -81,7 +92,7 @@ nav a {
 .usa { top: 41%; left: 21%; }
 .uk { top: 29%; left: 44%; }
 .france { top: 35%; left: 46.5%; }
-.brazil { top: 70%; left: 33%; }
+.brazil { top: 69%; left: 33%; }
 .egypt { top: 48%; left: 52%; }
 .saudi { top: 49%; left: 57.5%; }
 .india { top: 52%; left: 65%; }
@@ -109,9 +120,10 @@ nav a {
 }
 
 .currency {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
     bottom: 20px; /* Ajustado para pantalla completa */
     left: 20px;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }

@@ -5,7 +5,6 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: rgb(229, 229, 229);
-    overflow: hidden; /*evita el scroll*/
   }
   
   /* Encabezado */
@@ -20,6 +19,7 @@ html, body {
     font-size: 24px; 
     font-weight: bold; 
     color: #333;
+    min-width: 1500px;
     
   }
   
@@ -27,6 +27,7 @@ html, body {
     font-size: 25px;
     font-weight: bold;
     font-style: normal;
+    min-width: 700px;
   }
   
   nav {
@@ -43,22 +44,34 @@ html, body {
   }
   
   .user-icon {
-    font-size: 21px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* opcional, si quieres que se vea redondo */
+    object-fit: cover;
+}
   
   /* Contenedor del mapa */
   .map-container {
     position: relative;
     width: 100vw; /*coupa todo el ancho de pantalla*/
     height: 91.9vh; /*coupa todo el alto de pantalla*/
+    min-width: 1500px;
   }
   
   .map_brasil {
     width: 90%;
     height: 100%;
-    object-fit: cover; /*que la img cubra toda la pantalla*/
     border-radius: 5px;
+    opacity: 80%;
   }
   
   /* Banderas como botones */
@@ -79,21 +92,23 @@ html, body {
   }
   
   /* Posicionamiento de las banderas */
-  .antifaz { top: 28%; left: 9%; }
-  .ave { top: 17%; left: 16%; }
-  .balon { top: 29%; left: 25%; }
-  .cristo { top: 45%; left: 26%; }
-  .guitarra { top: 32%; left: 40%; }
-  .maracas { top: 50%; left: 37%; }
-  .pez { top: 66%; left: 29%; }
-  .tambor { top: 20%; left: 35%; }
-  .tapir { top: 13%; left: 7%; }
-  .taza { top: 83%; left: 25%; }
+  .antifaz { top: 31%; left: 18%; }
+  .ave { top: 13%; left: 23%; }
+  .balon { top: 29%; left: 29%; }
+  .cristo { top: 45%; left: 27%; }
+  .guitarra { top: 32%; left: 45%; }
+  .maracas { top: 50%; left: 40%; }
+  .pez { top: 66%; left: 34%; }
+  .tambor { top: 20%; left: 38%; }
+  .tapir { top: 16%; left: 15%; }
+  .taza { top: 83%; left: 30%; }
   
   .return-button {
-    position: absolute;
-    bottom: 30px;
-    right: 60px;
+    font-family: 'Poppins', sans-serif;
+    position:relative;
+    bottom: 50px;
+    right: 0px;
+    left: 1500px;
     background-color: #f9c00d;
     color: rgb(25, 24, 24);
     padding: 12px 20px;
@@ -129,9 +144,10 @@ html, body {
   }
   
   .currency {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
-    bottom: 20px; 
+    bottom: 20px; /* Ajustado para pantalla completa */
     left: 20px;
     font-weight: bold;
-    font-size: 1.2rem;
-  }
+    font-size: 1.3rem;
+}

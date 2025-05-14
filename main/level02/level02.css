@@ -19,6 +19,7 @@ html, body {
     font-size: 24px; 
     font-weight: bold; 
     color: #333;
+    min-width: 1500px;
     
   }
   
@@ -26,7 +27,7 @@ html, body {
     font-size: 25px;
     font-weight: bold;
     font-style: normal;
-    min-width: 700px;
+    min-width: 900px;
   }
   
   nav {
@@ -43,24 +44,33 @@ html, body {
   }
   
   .user-icon {
-    font-size: 21px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* opcional, si quieres que se vea redondo */
+    object-fit: cover;
+}
   
   /* Contenedor del mapa */
   .map-container {
     position: relative;
     width: 97vw; /*coupa todo el ancho de pantalla*/
     height: 95vh; /*coupa todo el alto de pantalla*/
-    min-width: 1200px;
+    min-width: 1500px;
   }
   
   .map_usa {
     width: 90%;
     height: 90%;
-    /*object-fit: cover; /*que la img cubra toda la pantalla*/
     border-radius: 5px;
-    min-width: 1000PX;
   }
   
   /* Banderas como botones */
@@ -82,20 +92,22 @@ html, body {
   
   /* Posicionamiento de las banderas */
   .bean { top: 25%; left: 50%; }
-  .dolar { top: 22%; left: 20%; }
-  .estatua { top: 26%; left: 57%; }
-  .hotdog { top: 37%; left: 38%; }
-  .pizza { top: 50%; left: 50%; }
-  .puente { top: 35%; left: 11%; }
-  .rock { top: 40%; left: 24%; }
-  .sombrero { top: 58%; left: 35%; }
-  .space { top: 2%; left: 8%; }
-  .taxi { top: 10%; left: 34%; }
+  .dolar { top: 22%; left: 25%; }
+  .estatua { top: 26%; left: 60%; }
+  .hotdog { top: 37%; left: 41%; }
+  .pizza { top: 50%; left: 55%; }
+  .puente { top: 35%; left: 18%; }
+  .rock { top: 44%; left: 30%; }
+  .sombrero { top: 58%; left: 40%; }
+  .space { top: 2%; left: 15%; }
+  .taxi { top: 10%; left: 38%; }
   
   .return-button {
-    position: absolute;
-    bottom: 30px;
-    right: 60px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    bottom: -7px;
+    right: 0px;
+    left: 1500px;
     background-color: #f9c00d;
     color: rgb(25, 24, 24);
     padding: 12px 20px;
@@ -115,7 +127,7 @@ html, body {
   /* Moneda y dinero */
   .currency {
     position: absolute; /* Lo mantiene dentro del mapa */
-    bottom: 5%; /* Ajusta la posición vertical */
+    bottom: 6%; /* Ajusta la posición vertical */
     left: 2%; /* Ajusta la posición horizontal */
     display: flex; /* Para alinear la moneda y el texto */
     align-items: center;
@@ -127,14 +139,15 @@ html, body {
   .currency img {
     width: 40px;
     height: auto;
-    margin-right: 11px;
-    margin-bottom: 8px;
+    margin-right: 10px;
+    margin-bottom: px;
   }
   
   .currency {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
-    bottom: 30px; 
+    bottom: 50px; /* Ajustado para pantalla completa */
     left: 20px;
     font-weight: bold;
-    font-size: 1.2rem;
-  }
+    font-size: 1.3rem;
+}

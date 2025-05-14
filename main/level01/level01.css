@@ -5,10 +5,10 @@ html, body {
     width: 100%;
     height: 100%;
     background-color: rgb(229, 229, 229);
-  }
+}
   
   /* Encabezado */
-  header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,14 +19,14 @@ html, body {
     font-size: 24px; 
     font-weight: bold; 
     color: #333;
-    
-  }
+    min-width: 1500px;
+}
   
   h1 {
     font-size: 25px;
     font-weight: bold;
     font-style: normal;
-    min-width: 700px;
+    min-width: 1000px;
   }
   
   nav {
@@ -42,23 +42,33 @@ html, body {
     font-weight: bold;
   }
   
-  .user-icon {
-    font-size: 21px;
+.user-icon {
+    width: 40px;
+    height: 33px;
     cursor: pointer;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; 
+    object-fit: cover;
+}
   
   /* Contenedor del mapa */
   .map-container {
     position: relative;
     width: 100vw; /*coupa todo el ancho de pantalla*/
     height: 91.9vh; /*coupa todo el alto de pantalla*/
-    min-width: 1400px;
+    min-width: 1600px;
   }
   
   .map_mx {
     width: 90%;
     height: 100%;
-    object-fit: cover; /*que la img cubra toda la pantalla*/
     border-radius: 5px;
   }
   
@@ -80,22 +90,24 @@ html, body {
   }
   
   /* Posicionamiento de las banderas */
-  .orca { top: 35%; left: 10%; }
-  .carne { top: 17%; left: 16%; }
-  .desierto { top: 26%; left: 27%; }
-  .cactus { top: 45%; left: 26%; }
-  .industria { top: 29%; left: 40%; }
-  .cascada { top: 50%; left: 37%; }
-  .tequila { top: 63%; left: 29%; }
-  .mosaico { top: 69%; left: 40%; }
-  .queso { top: 82%; left: 48%; }
-  .maracas { top: 83%; left: 59%; }
-  .pyramid { top: 62%; left: 69%; }
+  .orca { top: 35%; left: 15.6%; }
+  .carne { top: 15%; left: 20%; }
+  .desierto { top: 26%; left: 30%; }
+  .cactus { top: 42%; left: 32%; }
+  .industria { top: 33%; left: 43%; }
+  .cascada { top: 53%; left: 40%; }
+  .tequila { top: 65%; left: 35%; }
+  .mosaico { top: 69%; left: 46%; }
+  .queso { top: 82%; left: 53%; }
+  .maracas { top: 81%; left: 62%; }
+  .pyramid { top: 62%; left: 73%; }
   
   .return-button {
-    position: absolute;
-    bottom: 30px;
-    right: 60px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    bottom: 50px;
+    right: 0px;
+    left: 1500px;
     background-color: #f9c00d;
     color: rgb(25, 24, 24);
     padding: 12px 20px;
@@ -131,9 +143,10 @@ html, body {
   }
   
   .currency {
+    font-family: 'Poppins', sans-serif;
     position: absolute;
-    bottom: 20px; 
+    bottom: 20px; /* Ajustado para pantalla completa */
     left: 20px;
     font-weight: bold;
-    font-size: 1.2rem;
-  }
+    font-size: 1.3rem;
+}
