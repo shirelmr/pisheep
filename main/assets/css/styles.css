@@ -47,6 +47,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  max-width: 1657px;
 }
 
 body {
@@ -54,6 +55,7 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--black-color);
+  min-width: 1700px;
 }
 
 ul {
@@ -73,8 +75,13 @@ img {
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
   width: 90%;
-  max-width: 1120px;
+  min-width: 1500px;
   margin-inline: 1.5rem;
+  left: 0.4rem;
+  right: 50rem;
+
+  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .main {
@@ -83,28 +90,33 @@ img {
 
 /*=============== HEADER & NAV ===============*/
 .header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
+  position: relative;
+  top: 8rem;
+  left: 0rem;
   background-color: transparent;
   z-index: var(--z-fixed);
-  transition: background-color .4s, box-shadow .4s;
 }
 
-/* Navigation for mobile devices */
-/* @media screen and (max-width: 1150px) {
-  .nav__menu {
-    position: fixed;
-    top: -120%;
-    left: 0;
-    background-color: var(--body-color);
-    box-shadow: 0 4px 24px hsla(40, 24%, 4%, .1);
-    width: 100%;
-    padding-block: 5rem 4.5rem;
-    transition: top .4s;
-  }
-} */
+.nav{
+  display: flex;
+  min-width: 15oopx;
+  left: 500px;
+  right: 0px;
+  bottom: 7rem;
+  position: relative;
+  min-width: 100px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav__menu {
+  bottom: 20rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 77px;
+  margin-left: 0px;
+}
 
 .nav__list {
   text-align: center;
@@ -113,20 +125,26 @@ img {
   row-gap: 2.5rem;
 }
 
-.nav__link {
-  color: var(--black-color);
+.aboutUs_button {
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  box-shadow: 0 4px 12px #0000001a;
+  color: #000000;
+  background-color: #b4b2b6;
+  padding: 0.5rem 1rem;
+  border-radius: 0.7rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 90px;
 }
 
-.nav__close {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
+.aboutUs_button:hover {
+  background-color: #ffb81f;
+  transform: scale(1.1);
 }
 
-/* Show menu */
-.show-menu {
-  top: 0;
-}
 
 /* Add shadow header */
 .shadow-header {
@@ -145,6 +163,7 @@ img {
   position: relative;
   left: -10%;
   min-width: 120%;
+  height: 100%;
 }
 
 .home__data {
@@ -159,7 +178,7 @@ img {
   margin-bottom: .5rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-size: 30px;
 }
 
@@ -180,17 +199,16 @@ img {
 .start-button {
   font-family: 'Poppins', sans-serif;
   position: relative;
-  top: 2rem;
+  top: 1rem;
   right: 0rem;
   background-color: #f9c00d;
-  color: rgb(25, 24, 24);
+  color: #000000;
   padding: 12px 26px;
-  border: none;
   border-radius: 0.7rem;
   font-weight: bold;
   font-size: 1.2rem;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px #636363;
   transition: all 0.3s ease;
   cursor: pointer;
   z-index: 999;
@@ -198,7 +216,7 @@ img {
 
 .start-button:hover {
   background-color: #e6ae00;
-  transform: scale(1.30);
+  transform: scale(1.50);
 }
 
 .home__cloud-1, 
@@ -436,5 +454,3 @@ img {
     align-self: center;
   }
 }
-
-/* MAPAS */
