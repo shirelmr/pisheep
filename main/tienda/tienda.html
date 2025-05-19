@@ -177,7 +177,7 @@
       <img src="bag1.svg" alt="Bolsa YSL">
       <div class="item-details">
         <h2>Purse YSL</h2>
-        <p class="price">500 monedas</p>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 monedas</p> 
         <button class="boton_compra">BUY</button>
       </div>
     </div>
@@ -186,7 +186,7 @@
       <img src="bag2.svg" alt="Bolsa LV">
       <div class="item-details">
         <h2>Purse LV</h2>
-        <p class="price">120 monedas</p>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 monedas</p> 
         <button class="boton_compra">BUY</button>
       </div>
     </div>
@@ -195,7 +195,7 @@
       <img src="hat2.svg" alt="Sombrero 1">
       <div class="item-details">
         <h2>Asian Hat </h2>
-        <p class="price">120 monedas</p>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 monedas</p> 
         <button class="boton_compra">BUY</button>
       </div>
     </div>
@@ -204,7 +204,7 @@
       <img src="cup.svg" alt="Stanley">
       <div class="item-details">
         <h2>Stanley</h2>
-        <p class="price">120 monedas</p>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 monedas</p> 
         <button class="boton_compra">BUY</button>
       </div>
     </div>
@@ -256,10 +256,10 @@ nav a {
 }
 
 .titulo h1 {
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Luckiest Guy",cursive;
   font-size: 100px;
-  margin-left: 8em;
+  text-align: center;
+  border-radius: 100rem;
 
 }
 .item{
@@ -292,5 +292,19 @@ nav a {
   cursor: pointer;
   box-shadow: 0 14px #685801;
   font-family: "Luckiest Guy",cursive;  
+}
+.boton_compra:active {
+  box-shadow: 0 4px #ccac00;
+  transform: translateY(4px);
+}
+
+.item-details img{
+
+  width: 5%;
+  height: 5%;
+  background-color: #b5d6d6;
+  border-radius: 0px;
+  margin-right: 0em;
+
 }
 </style>
