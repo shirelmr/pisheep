@@ -171,6 +171,9 @@
   <div class="titulo">
     <h1>πShop</h1>
   </div>
+  <div class="avatar">
+    <img src="../sheep_base.svg" alt = "sheep">
+  </div>
   <div class="store-container">
     
     <div class="item">
@@ -208,6 +211,7 @@
         <button class="boton_compra">BUY</button>
       </div>
     </div>
+
   </div>
 
 </body>
@@ -220,7 +224,11 @@
     height: 100%;
     background: #b5d6d6;
 }
-
+.avatar img{
+  width: 70%;
+  position: fixed;
+  top: 25%; left: 40%
+}
 /* Encabezado */
 header {
     display: flex;
@@ -256,7 +264,7 @@ nav a {
 }
 
 .titulo h1 {
-  font-family: "Luckiest Guy",cursive;
+  font-family: "DM Serif Display", serif;
   font-size: 100px;
   text-align: center;
   border-radius: 100rem;
@@ -274,12 +282,17 @@ nav a {
   margin-right: 10em;
 }
 .store-container{
-  margin-left: 20rem;
+  margin-left: 10rem;
+}
+
+.item-details p{
+  font-size: 30px;
+  font-weight: bold;
 }
 .item-details h2{
   color: black;
-  font-size: 50px;
-  font-family: "Luckiest Guy",cursive;
+  font-size: 40px;
+  font-family: "DM Serif Display", serif;;
 }
 .boton_compra {
   position: absolute;
