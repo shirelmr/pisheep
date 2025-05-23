@@ -79,7 +79,7 @@ document.querySelectorAll('.op img').forEach(function(img) {
                 <?php if ($siguiente_tipo === 'fin') : ?>
                     window.location.href = 'success1-1.html';
                 <?php else : ?>
-                    window.location.href = 'level01.php?tipo=<?php echo $siguiente_tipo; ?>';
+                    window.location.href = 'level.php?tipo=<?php echo $siguiente_tipo; ?>';
                 <?php endif; ?>
             }, 1000);
         } else {
