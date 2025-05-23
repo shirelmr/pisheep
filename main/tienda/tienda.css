@@ -1,0 +1,125 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(229, 229, 229);
+  
+}
+
+.avatar img{
+width: 70%;
+position: fixed;
+top: 25%; left: 45%
+}
+/* Encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 70px;
+  background-color: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px; 
+  font-weight: bold; 
+  color: #333;
+  
+}
+
+h1{
+  font-size: 25px;
+  font-weight: bold;
+  font-style: normal;;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  font-size:large;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-icon {
+width: 40px;
+height: 33px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.user-icon img {
+width: 100%;
+height: auto;
+border-radius: 50%; 
+object-fit: cover;
+}
+
+.titulo h1 {
+font-family: "DM Serif Display", serif;
+font-size: 100px;
+text-align: center;
+border-radius: 100rem;
+}
+
+.item{
+display: flex;
+margin-bottom: 5rem;
+}
+.item img{
+width: 25%;
+height: 20%;
+background-color: rgb(185, 184, 184);
+border-radius: 30px;
+margin-right: 10em;
+transition: transform 0.1s ease-in-out;
+}
+.item img:hover {
+transform: scale(1.1);
+}
+.store-container{
+margin-left: 10rem;
+}
+
+.item-details p{
+font-size: 30px;
+font-weight: bold;
+}
+.item-details h2{
+color: black;
+font-size: 40px;
+font-family: "DM Serif Display", serif;;
+}
+.boton_compra {
+position: absolute;
+background-color: #FFD700;
+border: 4px solid #333;
+border-radius: 350px;
+font-size: 25px;
+color: #222222;
+padding: 10px 50px;
+cursor: pointer;
+box-shadow: 0 14px #685801;
+font-family: "Luckiest Guy",cursive;  
+}
+.boton_compra:active {
+box-shadow: 0 4px #ccac00;
+transform: translateY(4px);
+}
+
+.item-details img{
+
+width: 5%;
+height: 5%;
+background-color: rgb(229, 229, 229);
+border-radius: 0px;
+margin-right: 0em;
+
+}
