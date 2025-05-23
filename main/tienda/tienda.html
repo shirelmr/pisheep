@@ -1,12 +1,3 @@
-<?php
-session_start();
-// Mostrar errores para depuración
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -39,11 +30,12 @@ error_reporting(E_ALL);
   </div>
   <div class="avatar">
     <img src="sheep_base.svg" alt = "sheep">
+    <div id="preview-container"></div>
   </div>
   <div class="store-container">
     
     <div class="item">
-      <img src="../items/bag1.svg" alt="Bolsa YSL">
+      <img src="../items/bag1.svg" alt="Bolsa YSL" data-tipo="bag">
       <div class="item-details">
         <h2>Purse YSL</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
@@ -52,7 +44,7 @@ error_reporting(E_ALL);
     </div>
 
     <div class="item">
-      <img src="../items/bag2.svg" alt="Bolsa LV">
+      <img src="../items/bag2.svg" alt="Bolsa LV" data-tipo="bag">
       <div class="item-details">
         <h2>Purse LV</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
@@ -61,7 +53,7 @@ error_reporting(E_ALL);
     </div>
 
     <div class="item">
-      <img src="../items/hat2.svg" alt="Sombrero 1">
+      <img src="../items/hat2.svg" alt="Sombrero 1" data-tipo="hat">
       <div class="item-details">
         <h2>Asian Hat </h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
@@ -70,7 +62,7 @@ error_reporting(E_ALL);
     </div>
 
     <div class="item">
-      <img src="../items/cup.svg" alt="Stanley">
+      <img src="../items/cup.svg" alt="Stanley" data-tipo="hand">
       <div class="item-details">
         <h2>Stanley</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
@@ -82,3 +74,26 @@ error_reporting(E_ALL);
 
 </body>
 </html>
+
+<script>
+  document.querySelectorAll('.store-container .item img').forEach(img => {
+    img.addEventListener('click', () => {
+      const previewContainer = document.getElementById('preview-container');
+      previewContainer.innerHTML = ''; // Limpia el preview anterior
+
+      const previewImg = document.createElement('img');
+      previewImg.src = img.src;
+
+      // Quita clases viejas (por si acaso)
+      previewImg.className = '';
+
+      // Obtiene tipo del data attribute
+      const tipo = img.getAttribute('data-tipo');
+      if (tipo) {
+        previewImg.classList.add(`preview-${tipo}`);
+      }
+
+      previewContainer.appendChild(previewImg);
+    });
+  });
+</script>

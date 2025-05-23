@@ -123,3 +123,27 @@ border-radius: 0px;
 margin-right: 0em;
 
 }
+#preview-container img {
+  position: fixed;
+  width: 100px;
+  height: auto;
+  opacity: 0.95;
+  z-index: 999;
+}
+
+/* Posiciones por tipo de objeto */
+.preview-hat {
+  width: 25%;
+  height: 20%;
+  top: 30%; left: 45%
+}
+
+.preview-bag {
+  top: 35%;
+  left: 53%;
+}
+
+.preview-hand {
+  top: 40%;
+  left: 50%;
+}
