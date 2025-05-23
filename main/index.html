@@ -3,43 +3,430 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pisheep Math</title>
+   <title>Pisheep Index</title>
 
    <!-- Google Fonts -->
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
-   <!-- Favicon -->
-   <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Jost:wght@500&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 
    <!-- Remix Icons -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
 
-   <!-- Main CSS -->
-   <link rel="stylesheet" href="assets/css/styles.css">
+   <style>
+/*=============== VARIABLES CSS ===============*/
+:root {
+   --header-height: 3.5rem;
+
+/*========== Colors ==========*/
+   --first-color: hsl(40, 24%, 64%);
+   --white-color: hsl(40, 31%, 89%);
+   --black-color: hsl(40, 14%, 14%);
+   --body-color: #b5d6d6;
+
+/*========== Font and typography ==========*/
+   --body-font: "Abril Fatface";
+   --second-font: "Cormorant Garamond", serif;
+   --biggest-font-size: 3.5rem;
+   --bigger-font-size: 2.75rem;
+   --big-font-size: 1.25rem;
+   --normal-font-size: .938rem;
+
+/*========== Font weight ==========*/
+   --font-medium: 500;
+   --font-semi-bold: 600;
+   --font-bold: 700;
+
+/*========== z index ==========*/
+   --z-tooltip: 10;
+   --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+   :root {
+      --biggest-font-size: 6rem;
+      --bigger-font-size: 4.5rem;
+      --big-font-size: 2rem;
+      --normal-font-size: 1rem;
+   }
+}
+
+/*=============== BASE ===============*/
+* {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
+body {
+   font-family: var(--body-font);
+   font-size: var(--normal-font-size);
+   background-color: var(--body-color);
+   color: var(--black-color);
+}
+
+ul {
+   list-style: none;
+}
+
+a {
+   text-decoration: none;
+}
+
+img {
+   display: block;
+   max-width: 100%;
+   height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+   max-width: 1120px;
+   margin-inline: 1.5rem;
+}
+
+.main {
+   overflow: hidden;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+   position: fixed;
+   width: 100%;
+   top: 0;
+   left: 0;
+   background-color: transparent;
+   z-index: var(--z-fixed);
+   transition: background-color .4s, box-shadow .4s;
+}
+
+.nav {
+   position: relative;
+   height: var(--header-height);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.aboutUs_button {
+   font-family: 'Poppins', sans-serif;
+   text-decoration: none;
+   box-shadow: 0 4px 12px #0000001a;
+   color: #000000;
+   background-color: #b4b2b6;
+   padding: 0.5rem 1rem;
+   border-radius: 0.7rem;
+   font-weight: bold;
+   font-size: 1.1rem;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   display: inline-block;
+   margin-bottom: 2.5rem;
+}
+
+.aboutUs_button:hover {
+   background-color: #ffb81f;
+   transform: scale(1.1);
+}
+
+/* Add shadow header */
+.shadow-header {
+   background-color: var(--body-color);
+   box-shadow: 0 2px 16px hsla(40, 24%, 4%, .1);
+}
+
+/*=============== HOME ===============*/
+.home {
+   position: relative;
+}
+
+.home__container {
+   padding-top: 9.5rem;
+   height: 100vh;
+}
+
+.home__data {
+   position: relative;
+   z-index: var(--z-tooltip);
+}
+
+.home__subtitle {
+   font-family: 'Poppins', sans-serif;
+   font-weight: 200;
+   margin-bottom: 0.5rem;
+   font-size: 25px;
+   color: var(--black-color);
+}
+
+.home__title {
+   font-size: 90px;
+   font-family: 'Poppins', sans-serif;
+   line-height: 100%;
+   margin-bottom: 1rem;
+   color: var(--black-color);
+}
+
+.home__title span {
+   font-size: var(--bigger-font-size);
+}
+
+.start-button {
+   font-family: 'Poppins', sans-serif;
+   background-color: #f9c00d;
+   color: #000000;
+   padding: 12px 26px;
+   border-radius: 0.7rem;
+   font-weight: bold;
+   font-size: 1.2rem;
+   text-decoration: none;
+   box-shadow: 0 4px 12px rgba(99, 99, 99, 0.3);
+   transition: all 0.3s ease;
+   cursor: pointer;
+   display: inline-block;
+   margin-top: -6rem;
+}
+
+.start-button:hover {
+   background-color: #e6ae00;
+   transform: scale(1.05);
+}
+
+.home__cloud-1, 
+.home__cloud-2 {
+   position: absolute;
+   width: 150px;
+}
+
+.home__cloud-1 {
+   top: 6rem;
+   right: 1rem;
+   animation: cloud-1 8s linear infinite;
+}
+
+.home__cloud-2 {
+   top: 25rem;
+   left: .5rem;
+   animation: cloud-2 8s linear infinite;
+}
+
+.home__images {
+   overflow: hidden;
+}
+
+.home__images div {
+   max-width: initial;
+   width: 650px;
+   height: 270px;
+   background-size: 1000px 100%;
+   position: absolute;
+   left: 0;
+}
+
+.home__waves-1 {
+   bottom: -1.5rem;
+   animation: waves-1 4s linear infinite;
+}
+
+.home__waves-2 {
+   bottom: -1rem;
+   animation: waves-2 4s linear infinite;
+}
+
+.home__waves-3 {
+   bottom: 3rem;
+   animation: waves-1 4s linear infinite;
+}
+
+.home__ship {
+   width: 300px;
+   position: absolute;
+   bottom: 2rem;
+   left: 0;
+   right: 0;
+   margin-inline: auto;
+   transform-origin: center center;
+   animation: ship 2s linear infinite;
+}
+
+/* Animated Clouds */
+@keyframes cloud-1 {
+   0% {
+   margin-right: -1000px;
+   }
+   100% {
+   margin-right: 100%;
+   }
+}
+
+@keyframes cloud-2 {
+   0% {
+      margin-left: 100%;
+   }
+   100% {
+      margin-left: -1000px;
+   }
+}
+
+/* Animated waves */
+@keyframes waves-1 {
+   0% {
+      background-position-x: 1000px;
+   }
+   100% {
+      background-position-x: 0;
+   }
+}
+
+@keyframes waves-2 {
+   0% {
+      background-position-x: 0;
+   }
+   100% {
+      background-position-x: 1000px;
+   }
+}
+
+/* Animated ship */
+@keyframes ship {
+   0% {
+      transform: translateY(0) rotate(0);
+   }
+   25% {
+      transform: translateY(0) rotate(-8deg);
+   }
+   40% {
+      transform: translateY(4px) rotate(-8deg);
+   }
+   85% {
+      transform: translateY(1px) rotate(8deg);
+   }
+   100% {
+      transform: translateY(0) rotate(0);
+   }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 300px) {
+   .container {
+      margin-inline: 1rem;
+   }
+
+   .home__title {
+      font-size: 3rem;
+   }
+   .home__title span {
+      font-size: 2.5rem;
+   }
+}
+
+@media screen and (min-width: 350px) and (max-height: 680px) {
+   .home__container {
+      height: 750px;
+   }
+   .home__images div {
+      width: 100%;
+   }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+   .home__images div {
+      width: 100%;
+   }
+   .home__ship {
+      width: 400px;
+   }
+}
+
+/* For large devices */
+@media screen and (min-width: 1150px) {
+   .container {
+      margin-inline: auto;
+   }
+
+   .home__container {
+      height: 860px; /* Comment for full screen */
+      padding-top: 11.5rem;
+   }
+   .home__title {
+      margin-bottom: 3rem;
+   }
+   .home__cloud-1, .home__cloud-2 {
+      width: 250px;
+   }
+   .home__cloud-2 {
+      top: 20rem;
+   }
+   .home__images div {
+      height: 375px;
+      background-size: 100vw 100%;
+   }
+   .home__waves-1 {
+      bottom: -2.5rem;
+   }
+   .home__waves-2 {
+      bottom: -2rem;
+   }
+   .home__waves-3 {
+      bottom: 5rem;
+   }
+   .home__ship {
+      width: 630px;
+      left: 30rem;
+   }
+
+  /* Animated waves desktop */
+   @keyframes waves-1 {
+      0% {
+         background-position-x: 100vw;
+   }
+      100% {
+         background-position-x: 0;
+   }
+}
+
+   @keyframes waves-2 {
+      0% {
+         background-position-x: 0;
+   }
+      100% {
+         background-position-x: 100vw;
+      }
+   }
+}
+
+@media screen and (min-width: 1150px) and (min-height: 1000px) {
+   .home__container {
+      display: grid;
+      height: 100vh;
+   }
+   .home__data {
+      align-self: center;
+   }
+}
+   </style>
 </head>
 <body>
-      <!-- ==================== NAV ====================
-      <header class="header">
-         <nav class="nav container">
+<!--==================== HEADER ====================-->
+   <header class="header" id="header">
+      <nav class="nav container">
             <div class="nav__menu">
-               <a href="about.html" class="aboutUs_button">About Us</a>
             </div>
-         </nav>
-      </header> -->
+      </nav>
+   </header>
 
-   <!--==================== MAIN ====================-->
-   <main class="main">
-      <!--==================== HOME ====================-->
-      <section class="home">
-         <div class="home__container container">
+<!--==================== MAIN ====================-->
+<main class="main">
+   <!--==================== HOME ====================-->
+   <section class="home">
+      <div class="home__container container">
             <img src="assets/img/cloud.svg" alt="Nube 1" class="home__cloud-1">
             <img src="assets/img/cloud.svg" alt="Nube 2" class="home__cloud-2">
 
             <div class="home__data">
-               <div class="nav__menu">
-                  <a href="about.html" class="aboutUs_button">About Us</a>
-               </div>
-
+               <a href="about.html" class="aboutUs_button">About Us</a>
                <h3 class="home__subtitle">Welcome to</h3>
                <h1 class="home__title">
                   <span>&pi; Sheep</span>
@@ -53,11 +440,7 @@
                <img src="assets/img/sheep.png" alt="Oveja" class="home__ship">
                <div class="home__waves-1" style="background-image: url('assets/img/waves-1.png');"></div>
             </div>
-         </div>
+            </div>
       </section>
-   </main>
-
-   <!--=============== MAIN JS ===============-->
-   <script src="assets/js/main.js"></script>
 </body>
 </html>
