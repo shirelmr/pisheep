@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-// Configuración de conexión
+// Conexión usando las credenciales reales de tu base de datos
 $host = "localhost";
-$usuario = "root";
-$contrasena = "";
-$bd = "pisheep";
+$usuario = "TC2005B_601_1";
+$contrasena = "pAssWd_194742";
+$bd = "R_601_1";
 
 $conn = new mysqli($host, $usuario, $contrasena, $bd);
 if ($conn->connect_error) {
@@ -13,8 +13,8 @@ if ($conn->connect_error) {
 }
 
 // Variables del flujo: primero A luego B
-$tipo_actual = isset($_GET['tipo']) ? $_GET['tipo'] : 'A'; // tipo por defecto A
-$id_nivel = isset($_GET['nivel']) ? $_GET['nivel'] : 'N001'; // valor por defecto si no se especifica
+$tipo_actual = isset($_GET['tipo']) ? $_GET['tipo'] : 'A';
+$id_nivel = isset($_GET['nivel']) ? $_GET['nivel'] : 'N001';
 
 // Obtener la pregunta del tipo actual (A o B)
 $sql_pregunta = "SELECT ID_pregunta_ABC, pregunta FROM Pregunta_ABC 
@@ -53,7 +53,7 @@ if ($resultado_pregunta->num_rows > 0) {
     }
 
     // Determinar siguiente tipo
-    $siguiente_tipo = ($tipo_actual === 'A') ? 'B' : 'fin'; // fin puede ser una redirección a otra lógica
+    $siguiente_tipo = ($tipo_actual === 'A') ? 'B' : 'fin';
 } else {
     echo '<div class="que">Pregunta no encontrada</div>';
     $siguiente_tipo = 'fin';
@@ -75,7 +75,6 @@ document.querySelectorAll('.op img').forEach(function(img) {
         if (correcta === "1") {
             this.style.border = '4px solid green';
 
-            // Esperar 1 segundo y cargar siguiente pregunta dentro del mismo fondo
             setTimeout(function() {
                 <?php if ($siguiente_tipo === 'fin') : ?>
                     window.location.href = 'success1-1.html';
@@ -84,12 +83,11 @@ document.querySelectorAll('.op img').forEach(function(img) {
                 <?php endif; ?>
             }, 1000);
         } else {
-            this.style.border = '4px solid red'
+            this.style.border = '4px solid red';
             setTimeout(() => {
-            this.style.border = 'none';
+                this.style.border = 'none';
             }, 300);
         }
     });
 });
 </script>
-
