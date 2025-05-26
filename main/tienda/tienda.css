@@ -6,12 +6,6 @@ html, body {
   background: rgb(229, 229, 229);
   
 }
-
-.avatar img{
-width: 70%;
-position: fixed;
-top: 25%; left: 45%
-}
 /* Encabezado */
 header {
   display: flex;
@@ -153,4 +147,33 @@ margin-right: 0em;
   width: 20%;
   z-index: 999;
   pointer-events: none;
+}
+.avatar img[data-tipo="sheep"]{
+width: 70%;
+position: fixed;
+top: 25%; left: 45%
+}
+
+.avatar img[data-tipo="monedas"]{
+  width: 10%;
+  position: fixed;
+  top: 80%; left: 65%
+}
+
+.monedas-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre imagen y número */
+  margin-top: 10px;
+}
+
+.moneda-icon {
+  width: 24px; /* Ajusta según el tamaño deseado */
+  height: auto;
+}
+
+.moneda-cantidad {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333; /* Ajusta según tu diseño */
 }

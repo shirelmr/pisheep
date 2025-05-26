@@ -1,3 +1,59 @@
+<?php
+// Mostrar errores (útil en desarrollo)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Iniciar sesión
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Obtener el ID del usuario desde la sesión
+$user_id = $_SESSION['user_id'];
+
+// Datos de conexión a la base de datos
+$host = "localhost";
+$usuario = "TC2005B_601_1";
+$contrasena = "pAssWd_194742";
+$bd = "R_601_1";
+
+// Crear conexión
+$conn = new mysqli($host, $usuario, $contrasena, $bd);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// ... (código anterior)
+
+$monedas = 0;
+$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
+// Cambia "s" por "i" si ID_usuario es numérico
+$stmt->bind_param("s", $user_id); 
+if (!$stmt->execute()) {
+    die("Error al ejecutar la consulta: " . $stmt->error);
+}
+
+$stmt->bind_result($monedas);
+
+if (!$stmt->fetch()) {
+    // Mostrar error detallado
+    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
+}
+
+$stmt->close();
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -28,10 +84,18 @@
   <div class="titulo">
     <h1>π Shop</h1>
   </div>
-  <div class="avatar">
-    <img src="sheep_base.svg" alt="sheep">
-    <div id="preview-container"></div>
-  </div>
+
+
+<div class="avatar">
+  <img src="sheep_base.svg" alt="sheep" data-tipo="sheep">
+    <div class="monedas-container">
+      <img src="../assets/img/coin.svg" alt="Moneda" class="moneda-icon">
+      <span class="moneda-cantidad"><?php echo $monedas; ?></span>
+    </div>  
+  <div id="preview-container"></div>
+</div>
+
+
   
   <div class="store-container">
   
@@ -70,8 +134,7 @@
         <button class="boton_compra">BUY</button>
       </div>
     </div>
-  
-  </div>
+
   
 
 </body>
