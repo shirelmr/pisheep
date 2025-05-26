@@ -125,25 +125,32 @@ margin-right: 0em;
 }
 #preview-container img {
   position: fixed;
-  width: 100px;
-  height: auto;
-  opacity: 0.95;
   z-index: 999;
+  pointer-events: none; /* Evita que molesten al hacer clic */
 }
 
-/* Posiciones por tipo de objeto */
-.preview-hat {
-  width: 25%;
-  height: 20%;
-  top: 30%; left: 45%
-}
-
-.preview-bag {
+#preview-container img.preview-hat {
+  position: fixed;
   top: 35%;
-  left: 53%;
-}
+  left: 59%;
+  width: 40%;
+  z-index: 999;
+  pointer-events: none; 
 
-.preview-hand {
-  top: 40%;
-  left: 50%;
+}
+#preview-container img.preview-bag {
+  position: fixed;
+  top: 65%;
+  left: 75%;
+  width: 20%; /* Tamaño más pequeño */
+  z-index: 999;
+  pointer-events: none;
+}
+#preview-container img.preview-hand {
+  position: fixed;
+  top: 65%;
+  left: 75%;
+  width: 20%;
+  z-index: 999;
+  pointer-events: none;
 }
