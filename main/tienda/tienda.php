@@ -88,10 +88,10 @@ $stmt->close();
 
 <div class="avatar">
   <img src="sheep_base.svg" alt="sheep" data-tipo="sheep">
-    <div class="monedas-container">
-      <img src="../assets/img/coin.svg" alt="Moneda" class="moneda-icon">
-      <span class="moneda-cantidad"><?php echo $monedas; ?></span>
-    </div>  
+  <div class="monedas-container-fixed">
+    <img src="../assets/img/coin.svg" alt="Moneda" class="moneda-icon">
+    <span class="moneda-cantidad"><?php echo $monedas; ?></span>
+  </div> 
   <div id="preview-container"></div>
 </div>
 
