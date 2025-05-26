@@ -85,17 +85,17 @@ $stmt->close();
 
 
             <!-- Banderas como botones -->
-            <a href="level01/level01.html" class="flag mexico"><img src="imgWEB/flags/mexico.png" alt="México" style="width: 66px;"></a>
-            <a href="level02/level02.html" class="flag usa"><img src="imgWEB/flags/usa.png" alt="USA" style="width: 75px;"></a>
-            <a href="level07/uk.html" class="flag uk"><img src="imgWEB/flags/uk.png" alt="UK" style="width: 62px;"></a>
-            <a href="level04/francia.html" class="flag france"><img src="imgWEB/flags/france.png" alt="Francia" style="width: 60px;"></a>
-            <a href="level03/level03.html" class="flag brazil"><img src="imgWEB/flags/brazil.png" alt="Brasil" style="width: 66px;"></a>
-            <a href="level05/egypt.html" class="flag egypt"><img src="imgWEB/flags/egypt.png" alt="Egipto" style="width: 60px;"></a>
-            <a href="level06/arabia.html" class="flag saudi"><img src="imgWEB/flags/saudi.png" alt="Arabia Saudita" style="width: 65px;"></a>
+            <a href="level01/level01.php" class="flag mexico"><img src="imgWEB/flags/mexico.png" alt="México" style="width: 66px;"></a>
+            <a href="level02/level02.php" class="flag usa"><img src="imgWEB/flags/usa.png" alt="USA" style="width: 75px;"></a>
+            <a href="level07/uk.php" class="flag uk"><img src="imgWEB/flags/uk.png" alt="UK" style="width: 62px;"></a>
+            <a href="level04/francia.php" class="flag france"><img src="imgWEB/flags/france.png" alt="Francia" style="width: 60px;"></a>
+            <a href="level03/level03.php" class="flag brazil"><img src="imgWEB/flags/brazil.png" alt="Brasil" style="width: 66px;"></a>
+            <a href="level05/egypt.php" class="flag egypt"><img src="imgWEB/flags/egypt.png" alt="Egipto" style="width: 60px;"></a>
+            <a href="level06/arabia.php" class="flag saudi"><img src="imgWEB/flags/saudi.png" alt="Arabia Saudita" style="width: 65px;"></a>
             <!-- <a href="level08/level08.html" class="flag india"><img src="imgWEB/flags/india.png" alt="India"></a> -->
-            <a href="level08/china.html" class="flag china"><img src="imgWEB/flags/china.png" alt="China" style="width: 65px;"></a>
-            <a href="level09/japon.html" class="flag japan"><img src="imgWEB/flags/japan.png" alt="Japón" style="width: 65px;"></a>
-            <a href="level10/rusia.html" class="flag russia"><img src="imgWEB/flags/russia.png" alt="Rusia" style="width: 65px;"></a>
+            <a href="level08/china.php" class="flag china"><img src="imgWEB/flags/china.png" alt="China" style="width: 65px;"></a>
+            <a href="level09/japon.php" class="flag japan"><img src="imgWEB/flags/japan.png" alt="Japón" style="width: 65px;"></a>
+            <a href="level10/rusia.php" class="flag russia"><img src="imgWEB/flags/russia.png" alt="Rusia" style="width: 65px;"></a>
             <!-- <a href="australia.html" class="flag australia"><img src="imgWEB/flags/australia.png" alt="Australia"></a> -->
 
             <!-- currency -->

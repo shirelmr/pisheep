@@ -1,3 +1,60 @@
+<?php
+// Mostrar errores (útil en desarrollo)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Iniciar sesión
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Obtener el ID del usuario desde la sesión
+$user_id = $_SESSION['user_id'];
+
+// Datos de conexión a la base de datos
+$host = "localhost";
+$usuario = "TC2005B_601_1";
+$contrasena = "pAssWd_194742";
+$bd = "R_601_1";
+
+// Crear conexión
+$conn = new mysqli($host, $usuario, $contrasena, $bd);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// ... (código anterior)
+
+$monedas = 0;
+$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
+// Cambia "s" por "i" si ID_usuario es numérico
+$stmt->bind_param("s", $user_id); 
+if (!$stmt->execute()) {
+    die("Error al ejecutar la consulta: " . $stmt->error);
+}
+
+$stmt->bind_result($monedas);
+
+if (!$stmt->fetch()) {
+    // Mostrar error detallado
+    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
+}
+
+$stmt->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,7 +97,7 @@
             <!-- currency -->
             <div class="currency">
                 <img src="coin.png" alt="Moneda">
-                <span>0</span>
+                <span><?php echo $monedas; ?></span>
             </div>
         </div>
 
