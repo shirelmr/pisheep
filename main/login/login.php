@@ -47,7 +47,7 @@ if (!empty($_POST)) {
                 $stmt->close();
                 $conn->close();
                 // Redirige al mapa si la contraseña es correcta
-                header("Location: worldmap.html");
+                header("Location: worldmap.php");
                 exit;
             } else {
                 $error = "❌ Contraseña incorrecta";
