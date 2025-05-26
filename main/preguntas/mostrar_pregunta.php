@@ -77,7 +77,7 @@ document.querySelectorAll('.op img').forEach(function(img) {
 
             setTimeout(function() {
                 <?php if ($siguiente_tipo === 'fin') : ?>
-                    window.location.href = 'success1-1.html';
+                    window.location.href = 'success.html';
                 <?php else : ?>
                     window.location.href = 'level.php?tipo=<?php echo $siguiente_tipo; ?>';
                 <?php endif; ?>
