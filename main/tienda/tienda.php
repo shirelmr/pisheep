@@ -104,7 +104,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Purse YSL</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra">BUY</button>
+        <button class="boton_compra" data-id="1" data-price="120">BUY</button>
       </div>
     </div>
   
@@ -113,7 +113,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Purse LV</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra">BUY</button>
+        <button class="boton_compra" data-id="2" data-price="120">BUY</button>
       </div>
     </div>
   
@@ -122,7 +122,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra">BUY</button>
+        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
       </div>
     </div>
   
@@ -131,7 +131,8 @@ $stmt->close();
       <div class="item-details">
         <h2>Stanley</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra">BUY</button>
+        <button class="boton_compra" data-id="4" data-price="120">BUY</button>
+
       </div>
     </div>
 
@@ -161,4 +162,31 @@ $stmt->close();
       previewContainer.appendChild(previewImg);
     });
   });
+
+  document.querySelectorAll('.boton_compra').forEach(button => {
+  button.addEventListener('click', () => {
+    const id = button.getAttribute('data-id');
+    const price = button.getAttribute('data-price');
+
+    fetch('comprar.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `item_id=${encodeURIComponent(id)}&price=${encodeURIComponent(price)}`
+    })
+    .then(response => response.json())
+    .then(result => {
+      alert(result.message);
+      if (result.success) {
+        location.reload();
+      }
+    })
+    .catch(error => {
+      console.error('Error al comprar:', error);
+      alert("Error en la compra");
+    });
+  });
+});
+
 </script>
