@@ -19,12 +19,12 @@
 
     .ram {
       position: absolute;
-      width: 20%; /* ⬅️ increase size here */
+      width: 20%;
     }
 
     .ram.left {
       left: 5%;
-      top: 60%
+      top: 60%;
     }
 
     .ram.right {
@@ -32,29 +32,29 @@
       top: 60%;
     }
 
-    .preguntas.img cloud{
-      width: 10%;
-    }
     .cloud {
-      width: 110%;          /* Cambiar el tamaño */
-      height: auto;          /* Mantener proporción */
-      position: absolute;    /* Para posicionamiento personalizado */
-      top: -35%;        /* Distancia desde la parte superior */
-      left: -3%;           /* Distancia desde la izquierda */        /* Hacerla un poco transparente */
-    }
-    .respuestas img{
+      width: 110%;
+      height: auto;
       position: absolute;
+      top: -35%;
+      left: -3%;
     }
+
     .answer_1 {
+      position: absolute;
       top: 20%;
       left: 10%;
     }
-    
+
     .answer_2 {
+      position: absolute;
       top: 20%;
       right: 10%;
     }
 
+    img {
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -62,18 +62,27 @@
     <img src="ram-left.svg" alt="Ram left" class="ram left" />
     <img src="ram-rigth.svg" alt="Ram right" class="ram right" />
   </div>
-  <div class="preguntas">
-    <img src="cloud.svg" alt="cloud" class="cloud"/>
-  </div>
-  <div class ="respuestas">
-    <img src = "circle.svg" alt="answer" class="answer_1"/>
-    <img src = "circle.svg" alt="answer" class="answer_2"/>
-  </div>
 
-  <!-- ⬇️ ADD THESE LINES HERE -->
-  <script src="game.js"></script>
+  <?php
+  $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'A';
+  include 'get_question.php';
+  ?>
+
   <script>
-    window.onload = loadQuestion;
+    document.querySelectorAll('img[data-correcta]').forEach(img => {
+      img.addEventListener('click', () => {
+        const correct = img.getAttribute('data-correcta') === "1";
+        img.style.border = correct ? "4px solid green" : "4px solid red";
+
+        setTimeout(() => {
+          if (correct) {
+            window.location.href = "game.php?tipo=<?php echo ($tipo === 'A') ? 'B' : 'fin'; ?>";
+          } else {
+            img.style.border = "none";
+          }
+        }, 800);
+      });
+    });
   </script>
 </body>
 </html>

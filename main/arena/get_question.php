@@ -1,59 +1,49 @@
 <?php
-header('Content-Type: application/json');
-$tipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'A';
-$nivel = isset($_GET['nivel']) ? $_GET['nivel'] : 'N001';
-
+session_start();
 $host = "localhost";
 $usuario = "TC2005B_601_1";
 $contrasena = "pAssWd_194742";
 $bd = "R_601_1";
 
-// Conexión
 $conn = new mysqli($host, $usuario, $contrasena, $bd);
 if ($conn->connect_error) {
-    http_response_code(500);
-    echo json_encode(["error" => "Connection failed"]);
-    exit();
+    die("Conexión fallida: " . $conn->connect_error);
 }
+include 'db_connection.php';
 
-// Obtener pregunta aleatoria del nivel y tipo
+$tipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'A';
+$nivel = isset($_GET['nivel']) ? $_GET['nivel'] : 'N001';
+
+// Obtener pregunta aleatoria
 $sql_pregunta = "SELECT ID_pregunta_ABC, pregunta FROM Pregunta_ABC 
-                 WHERE ID_nivel = '$nivel' AND Tipo = '$tipo' 
+                 WHERE ID_nivel = '$id_nivel' AND Tipo = '$tipo_actual' 
                  ORDER BY RAND() LIMIT 1";
-$resultado_pregunta = $conn->query($sql_pregunta);
+$res = $conn->query($sql_pregunta);
 
-if ($resultado_pregunta->num_rows == 0) {
-    http_response_code(404);
-    echo json_encode(["error" => "No question found"]);
-    exit();
+if ($res->num_rows > 0) {
+    $preg = $res->fetch_assoc();
+    $id_pregunta = $preg['ID_pregunta_ABC'];
+    $ruta_img_pregunta = $preg['pregunta'];
+
+    echo '<img src="' . $ruta_img_pregunta . '" class="cloud" alt="Pregunta">';
+
+    // Obtener opciones
+    $sql_opciones = "SELECT opcion_texto, es_correcta FROM Opcion 
+                     WHERE ID_pregunta_ABC = '$id_pregunta' 
+                     ORDER BY RAND() LIMIT 2";
+    $res_opciones = $conn->query($sql_opciones);
+
+    $op_classes = ['answer_1', 'answer_2'];
+    $i = 0;
+
+    while ($op = $res_opciones->fetch_assoc()) {
+        $ruta_op = $op['opcion_texto'];
+        $correcta = $op['es_correcta'];
+        echo '<img src="' . $ruta_op . '" class="' . $op_classes[$i] . '" data-correcta="' . $correcta . '" />';
+        $i++;
+    }
+} else {
+    echo "<p style='color:white'>No se encontró ninguna pregunta</p>";
 }
-
-$fila = $resultado_pregunta->fetch_assoc();
-$id_pregunta = $fila["ID_pregunta_ABC"];
-$pregunta_img = $fila["pregunta"];
-
-// Obtener opciones
-$sql_opciones = "SELECT opcion_texto, es_correcta FROM Opcion 
-                 WHERE ID_pregunta_ABC = '$id_pregunta'";
-$resultado_opciones = $conn->query($sql_opciones);
-
-$opciones = [];
-while ($op = $resultado_opciones->fetch_assoc()) {
-    $opciones[] = [
-        "img" => $op["opcion_texto"],
-        "correct" => $op["es_correcta"] == 1
-    ];
-}
-
-// Mezclar las opciones aleatoriamente
-shuffle($opciones);
-
-// Respuesta
-echo json_encode([
-    "question_id" => $id_pregunta,
-    "image" => $pregunta_img,
-    "options" => $opciones
-]);
-
 $conn->close();
 ?>
