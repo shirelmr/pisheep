@@ -73,7 +73,7 @@ $stmt->close();
   <header>
     <h1>π sheep</h1>
     <nav>
-      <a href="../worldmap.html">home</a>
+      <a href="../worldmap.php">home</a>
       <a href="../arena/arena.html">arena</a>
       <a href="avatar.html">avatar</a>
       <a href="shop.html">shop</a>
