@@ -50,6 +50,19 @@ try {
     $stmt->execute();
     $stmt->close();
 
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM Avatar WHERE ID_usuario = ? AND ID_articulo = ?");
+    $stmt->bind_param("si", $user_id, $item_id);
+    $stmt->execute();
+    $stmt->bind_result($existe);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($existe > 0) {
+        $conn->rollback();
+        echo json_encode(["success" => false, "message" => "Ya compraste este artículo"]);
+        exit;
+    }
+
     $stmt = $conn->prepare("INSERT INTO Avatar (ID_usuario, ID_articulo) VALUES (?, ?)");
     $stmt->bind_param("si", $user_id, $item_id); // id_articulo es int, por eso "si" y no "ss"
     $stmt->execute();
