@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avatar </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(229, 229, 229);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles - Using your provided CSS */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 70px;
+            background-color: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #333;
+        }
+
+        h1 {
+            font-size: 25px;
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            font-size: large;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .user-icon {
+            width: 40px;
+            height: 33px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-icon img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%; 
+            object-fit: cover;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 80px);
+            position: relative;
+        }
+
+        /* Main Layout */
+        .avatar-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            transition: margin-right 0.3s ease;
+        }
+
+        .avatar-panel.sidebar-open {
+            margin-right: 400px;
+        }
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .titulo h1 {
+            font-family: "DM Serif Display", serif;
+            font-size: 100px;
+            text-align: center;
+            border-radius: 100rem;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Content Layout */
+        .content-layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            width: 100%;
+            max-width: 1450px;
+        }
+
+        /* Controls Column */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        /* Avatar Display */
+        .avatar-container {
+            position: relative;
+        }
+
+        .avatar {
+            width: 450px;
+            height: 450px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sheep-base {
+            width: 250%;
+            height: 170%;
+            z-index: 1;
+        }
+
+        .avatar-item {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .avatar-item.hat {
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+        }
+
+        .avatar-item.bag {
+            bottom: 50px;
+            right: -30px;
+            width: 80px;
+        }
+
+        .avatar-item.hand {
+            bottom: 80px;
+            left: -40px;
+            width: 60px;
+        }
+
+        /* Control Buttons */
+        .controls {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: flex-start;
+            margin-right: 15rem;
+        }
+
+        .control-btn {
+            background-color: #FFD700;
+            border: 4px solid #333;
+            border-radius: 350px;
+            font-size: 25px;
+            color: #222222;
+            padding: 15px 40px;
+            cursor: pointer;
+            box-shadow: 0 14px #685801;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            width: 200px;
+            transition: all 0.1s ease-in-out;
+            text-align: center;
+        }
+
+        .control-btn:active {
+            box-shadow: 0 4px #ccac00;
+            transform: translateY(4px);
+        }
+
+        .control-btn.active {
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff5252;
+            box-shadow: 0 14px #cc5252;
+        }
+
+        .control-btn.active:active {
+            box-shadow: 0 4px #cc5252;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 80px;
+            right: -400px;
+            width: 400px;
+            height: calc(100vh - 80px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.3);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        /* Items Grid */
+        .items-grid {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .item-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #FFD700;
+        }
+
+        .item-card.selected {
+            border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .item-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-status {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 0px 20px;
+            }
+            
+            .sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .avatar-panel.sidebar-open {
+                margin-right: 0;
+            }
+            
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .titulo h1 {
+                font-size: 40px;
+            }
+
+            .content-layout {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .controls {
+                align-items: center;
+            }
+
+            .control-btn {
+                width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>π sheep</h1>
+        <nav>
+            <a href="worldmap.php">home</a>
+            <a href="arena/arena.html">arena</a>
+            <a href="avatar.html">avatar</a>
+            <a href="shop.html">shop</a>
+            <div class="user-icon"><img src="user.svg" alt="User icon"></div>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <!-- Avatar Panel -->
+        <div class="avatar-panel" id="avatarPanel">
+            <div class="titulo">
+                <h1>Avatar</h1>
+            </div>
+
+            <div class="content-layout">
+                <!-- Controls Column -->
+                <div class="controls">
+                    <button class="control-btn" data-category="head">Head</button>
+                    <button class="control-btn" data-category="bags">Bags</button>
+                    <button class="control-btn" data-category="hand">Hand</button>
+                </div>
+
+                <!-- Avatar Display -->
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <!-- Base sheep -->
+                        <img src="sheep_base.svg" alt="sheep" class="sheep-base">
+                        
+                        <!-- Avatar items (initially hidden) -->
+                        <img id="currentHat" class="avatar-item hat" style="display: none;">
+                        <img id="currentBag" class="avatar-item bag" style="display: none;">
+                        <img id="currentHand" class="avatar-item hand" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title" id="sidebarTitle">Items</h2>
+                <button class="close-btn" id="closeSidebar">✕</button>
+            </div>
+            <div class="items-grid" id="itemsGrid">
+                <!-- Items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script>
+        // Sample data for available items
+        const availableItems = {
+            head: [
+                { id: 'hat1', name: 'Asian Hat', image: 'items/hat2.svg', owned: true },
+                { id: 'hat2', name: 'Cowboy Hat', image: 'items/hat1.svg', owned: true },
+                { id: 'hat3', name: 'Top Hat', image: 'items/hat3.svg', owned: false }
+            ],
+            bags: [
+                { id: 'bag1', name: 'Purse YSL', image: 'items/bag1.svg', owned: true },
+                { id: 'bag2', name: 'Purse LV', image: 'items/bag2.svg', owned: true },
+                { id: 'bag3', name: 'Backpack', image: 'items/bag3.svg', owned: false }
+            ],
+            hand: [
+                { id: 'hand1', name: 'Stanley Cup', image: 'items/cup.svg', owned: true },
+                { id: 'hand2', name: 'Coffee Mug', image: 'items/mug.svg', owned: false },
+                { id: 'hand3', name: 'Phone', image: 'items/phone.svg', owned: true }
+            ]
+        };
+
+        // Current equipped items
+        let currentItems = {
+            head: null,
+            bags: null,
+            hand: null
+        };
+
+        // DOM Elements
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const avatarPanel = document.getElementById('avatarPanel');
+        const sidebarTitle = document.getElementById('sidebarTitle');
+        const itemsGrid = document.getElementById('itemsGrid');
+        const closeSidebar = document.getElementById('closeSidebar');
+        const controlBtns = document.querySelectorAll('.control-btn');
+
+        // Event Listeners
+        controlBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.getAttribute('data-category');
+                openSidebar(category);
+                
+                // Update active button
+                controlBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        closeSidebar.addEventListener('click', closeSidebarPanel);
+        overlay.addEventListener('click', closeSidebarPanel);
+
+        // Functions
+        function openSidebar(category) {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            avatarPanel.classList.add('sidebar-open');
+            
+            // Update sidebar title
+            const titles = {
+                head: 'Head Items',
+                bags: 'Bags',
+                hand: 'Hand Items'
+            };
+            sidebarTitle.textContent = titles[category] || 'Items';
+            
+            // Populate items
+            populateItems(category);
+        }
+
+        function closeSidebarPanel() {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            avatarPanel.classList.remove('sidebar-open');
+            
+            // Remove active state from buttons
+            controlBtns.forEach(b => b.classList.remove('active'));
+        }
+
+        function populateItems(category) {
+            const items = availableItems[category] || [];
+            itemsGrid.innerHTML = '';
+
+            // Add "None" option
+            const noneCard = createItemCard({
+                id: 'none',
+                name: 'None',
+                image: '',
+                owned: true
+            }, category, true);
+            itemsGrid.appendChild(noneCard);
+
+            // Add items
+            items.forEach(item => {
+                if (item.owned) {
+                    const itemCard = createItemCard(item, category);
+                    itemsGrid.appendChild(itemCard);
+                }
+            });
+        }
+
+        function createItemCard(item, category, isNone = false) {
+            const card = document.createElement('div');
+            card.className = 'item-card';
+            
+            // Check if this item is currently selected
+            if ((isNone && !currentItems[category]) || 
+                (!isNone && currentItems[category] === item.id)) {
+                card.classList.add('selected');
+            }
+
+            card.innerHTML = `
+                <div class="item-image">
+                    ${!isNone && item.image ? `<img src="${item.image}" alt="${item.name}">` : '🚫'}
+                </div>
+                <div class="item-name">${item.name}</div>
+                <div class="item-status">${item.owned ? 'Owned' : 'Not Owned'}</div>
+            `;
+
+            card.addEventListener('click', () => {
+                if (item.owned || isNone) {
+                    selectItem(item.id, category, item.image, isNone);
+                    
+                    // Update selection in UI
+                    document.querySelectorAll('.item-card').forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                }
+            });
+
+            return card;
+        }
+
+        function selectItem(itemId, category, imageSrc, isNone = false) {
+            // Update current items
+            currentItems[category] = isNone ? null : itemId;
+            
+            // Update avatar display
+            const avatarElements = {
+                head: document.getElementById('currentHat'),
+                bags: document.getElementById('currentBag'),
+                hand: document.getElementById('currentHand')
+            };
+
+            const element = avatarElements[category];
+            if (element) {
+                if (isNone || !imageSrc) {
+                    element.style.display = 'none';
+                } else {
+                    element.src = imageSrc;
+                    element.style.display = 'block';
+                }
+            }
+        }
+
+        // Initialize with some default items
+        document.addEventListener('DOMContentLoaded', () => {
+            // You can set default equipped items here
+            // selectItem('hat1', 'head', 'items/hat2.svg');
+        });
+    </script>
+</body>
+</html>
