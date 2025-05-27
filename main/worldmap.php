@@ -72,7 +72,7 @@ $stmt->close();
             <a href="index.html">home</a>
             <a href="arena/arena.html">arena</a>
             <a href="avatar.html">avatar</a>
-            <a href="tienda/tienda.html">shop</a>
+            <a href="tienda/tienda.php">shop</a>
             <div class="user-icon"><img src="imgWEB/user.svg" alt="User icon"></div>
 
         </nav>

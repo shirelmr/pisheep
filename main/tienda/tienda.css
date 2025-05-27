@@ -161,23 +161,32 @@ top: 25%; left: 45%
 }
 
 .monedas-container {
+  position: fixed;
+  top: 20%;   /* Ajusta la posición vertical */
+  left: 80%;  /* Ajusta la posición horizontal */
   display: flex;
   align-items: center;
-  gap: 8px; /* Espacio entre imagen y número */
-  margin-top: 10px;
+  gap: 8px;
+  background-color: white; /* Opcional: fondo blanco */
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave */
+  z-index: 1000; /* Encima del resto */
+  transform: scale(1.8);
 }
 
+
 .moneda-icon {
-  width: 24px; /* Ajusta según el tamaño deseado */
-  height: auto;
+  width: 24px;
+  height: 24px;
 }
 
 .moneda-cantidad {
+  font-size: 20px;
   font-weight: bold;
-  font-size: 18px;
-  color: #333; /* Ajusta según tu diseño */
-  display: flex;
+  color: #333;
 }
+
 
 .monedas-container-fixed {
   position: fixed;
