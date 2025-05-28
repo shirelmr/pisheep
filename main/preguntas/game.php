@@ -26,7 +26,7 @@
   </style>
 </head>
 <body>
-  <img src = "arena_bg.svg" class= "map-container">
+  <img src = "../arena/arena_bg.svg" class= "map-container">
 
 
   <?php
