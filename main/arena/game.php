@@ -62,6 +62,14 @@
     <img src="ram-left.svg" alt="Ram left" class="ram left" />
     <img src="ram-rigth.svg" alt="Ram right" class="ram right" />
   </div>
+  <div class="answer">
+    <img src="circle.svg" alt="respuesta1" class="answer_1"/>
+    <img src="circle.svg" alt="respuesta2" class="answer_2"/>
+  </div>
+  <div class= "cloud">
+  <img src="cloud.svg" alt="nube" class="cloud/>
+  </div>
+
 
   <?php
   $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'A';
