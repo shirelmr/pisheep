@@ -22,7 +22,7 @@ $sql_pregunta = "SELECT ID_pregunta_ABC, pregunta FROM Pregunta_ABC
                  ORDER BY RAND() LIMIT 1";
 $resultado_pregunta = $conn->query($sql_pregunta);
 
-if ($resultado_pregunta->num_rows == 0) {
+if ($resultado_pregunta->num_rows > 0) {
     $fila = $resultado_pregunta->fetch_assoc();
     $id_pregunta = $fila["ID_pregunta_ABC"];
     $rutaImagen = $fila["pregunta"];
