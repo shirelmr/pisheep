@@ -16,48 +16,50 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh;
             background: rgb(229, 229, 229);
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
-        /* Header Styles - Using your provided CSS */
+        /* Header Styles - Smaller */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0px 70px;
+            padding: 0px 50px;
             background-color: white;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             font-family: 'Poppins', sans-serif;
-            font-size: 24px; 
+            font-size: 18px; 
             font-weight: bold; 
             color: #333;
+            height: 60px;
         }
 
         h1 {
-            font-size: 25px;
+            font-size: 20px;
             font-weight: bold;
             font-style: normal;
+            margin: 0;
         }
 
         nav {
             display: flex;
-            gap: 20px;
-            font-size: large;
+            gap: 15px;
+            font-size: medium;
         }
 
         nav a {
             text-decoration: none;
             color: black;
-            font-size: 20px;
+            font-size: 16px;
             font-weight: bold;
         }
 
         .user-icon {
-            width: 40px;
-            height: 33px;
+            width: 32px;
+            height: 32px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -74,7 +76,7 @@
         /* Main Container */
         .main-container {
             display: flex;
-            height: calc(100vh - 80px);
+            height: calc(100vh - 60px);
             position: relative;
         }
 
@@ -84,16 +86,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem;
+            padding: 1rem;
             transition: margin-right 0.3s ease;
         }
 
         .avatar-panel.sidebar-open {
-            margin-right: 400px;
+            margin-right: 350px;
         }
 
         .titulo {
             text-align: center;
+            margin-top: 2rem;
             margin-bottom: 2rem;
             width: 100%;
         }
@@ -105,6 +108,7 @@
             border-radius: 100rem;
             color: #333;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin: 0;
         }
 
         /* Content Layout */
@@ -113,15 +117,16 @@
             align-items: center;
             justify-content: center;
             gap: 3rem;
+            margin-top: 5rem;
             width: 100%;
-            max-width: 1450px;
+            max-width: 1000px;
         }
 
         /* Controls Column */
         .controls {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: flex-start;
         }
 
@@ -131,8 +136,8 @@
         }
 
         .avatar {
-            width: 450px;
-            height: 450px;
+            width: 220px;
+            height: 200px;
             position: relative;
             display: flex;
             align-items: center;
@@ -140,8 +145,8 @@
         }
 
         .sheep-base {
-            width: 250%;
-            height: 170%;
+            width: 400%;
+            height: 360%;
             z-index: 1;
         }
 
@@ -151,22 +156,22 @@
         }
 
         .avatar-item.hat {
-            top: -20px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
+            width: 100px;
         }
 
         .avatar-item.bag {
-            bottom: 50px;
-            right: -30px;
-            width: 80px;
+            bottom: 35px;
+            right: -20px;
+            width: 55px;
         }
 
         .avatar-item.hand {
-            bottom: 80px;
-            left: -40px;
-            width: 60px;
+            bottom: 55px;
+            left: -25px;
+            width: 40px;
         }
 
         /* Control Buttons */
@@ -174,50 +179,50 @@
             font-family: 'Poppins', sans-serif;
             display: flex;
             flex-direction: column;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: flex-start;
             margin-right: 15rem;
         }
 
         .control-btn {
             background-color: #FFD700;
-            border: 4px solid #333;
+            border: 3px solid #333;
             border-radius: 350px;
-            font-size: 25px;
+            font-size: 22px;
             color: #222222;
-            padding: 15px 40px;
+            padding: 12px 30px;
             cursor: pointer;
-            box-shadow: 0 14px #685801;
+            box-shadow: 0 8px #685801;
             font-family: 'Poppins', sans-serif;
             font-weight: bold;
-            width: 200px;
+            width: 160px;
             transition: all 0.1s ease-in-out;
             text-align: center;
         }
 
         .control-btn:active {
-            box-shadow: 0 4px #ccac00;
-            transform: translateY(4px);
+            box-shadow: 0 3px #ccac00;
+            transform: translateY(3px);
         }
 
         .control-btn.active {
             background: #ff6b6b;
             color: white;
             border-color: #ff5252;
-            box-shadow: 0 14px #cc5252;
+            box-shadow: 0 8px #cc5252;
         }
 
         .control-btn.active:active {
-            box-shadow: 0 4px #cc5252;
+            box-shadow: 0 3px #cc5252;
         }
 
         /* Sidebar */
         .sidebar {
             position: fixed;
-            top: 80px;
-            right: -400px;
-            width: 400px;
-            height: calc(100vh - 80px);
+            top: 60px;
+            right: -350px;
+            width: 350px;
+            height: calc(100vh - 60px);
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-left: 1px solid rgba(255, 255, 255, 0.3);
@@ -231,7 +236,7 @@
         }
 
         .sidebar-header {
-            padding: 2rem;
+            padding: 1.5rem;
             border-bottom: 1px solid rgba(0,0,0,0.1);
             display: flex;
             justify-content: space-between;
@@ -240,18 +245,19 @@
 
         .sidebar-title {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: #333;
+            margin: 0;
         }
 
         .close-btn {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             color: #666;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -265,16 +271,16 @@
 
         /* Items Grid */
         .items-grid {
-            padding: 2rem;
+            padding: 1.5rem;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .item-card {
             background: rgba(255, 255, 255, 0.8);
-            border-radius: 15px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 1rem;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -282,8 +288,8 @@
         }
 
         .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             border-color: #FFD700;
         }
 
@@ -293,9 +299,9 @@
         }
 
         .item-image {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1rem;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 0.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -309,11 +315,12 @@
         .item-name {
             font-weight: 600;
             color: #333;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
+            font-size: 14px;
         }
 
         .item-status {
-            font-size: 0.9rem;
+            font-size: 12px;
             color: #666;
         }
 
@@ -339,7 +346,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                padding: 0px 20px;
+                padding: 0px 15px;
             }
             
             .sidebar {
@@ -361,15 +368,22 @@
 
             .content-layout {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 3rem;
             }
 
             .controls {
                 align-items: center;
+                margin-right: 0;
             }
 
             .control-btn {
-                width: 180px;
+                width: 120px;
+                font-size: 16px;
+            }
+
+            .avatar {
+                width: 250px;
+                height: 250px;
             }
         }
     </style>
@@ -398,7 +412,7 @@
                 <div class="controls">
                     <button class="control-btn" data-category="head">Head</button>
                     <button class="control-btn" data-category="bags">Bags</button>
-                    <button class="control-btn" data-category="hand">Hand</button>
+                    <button class="control-btn" data-category="hand">Body</button>
                 </div>
 
                 <!-- Avatar Display -->
