@@ -9,7 +9,7 @@ $conn = new mysqli($host, $usuario, $contrasena, $bd);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-include 'db_connection.php';
+include 'conexion.php';
 
 $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : 'A';
 $nivel = isset($_GET['nivel']) ? $_GET['nivel'] : 'N001';
