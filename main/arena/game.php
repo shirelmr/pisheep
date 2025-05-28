@@ -67,7 +67,7 @@
     <img src="circle.svg" alt="respuesta2" class="answer_2"/>
   </div>
   <div class= "cloud">
-  <img src="cloud.svg" alt="nube" class="cloud/>
+  <img src="cloud.svg" alt="nube" class="cloud"/>
   </div>
 
 
