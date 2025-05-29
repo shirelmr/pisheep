@@ -1,9 +1,202 @@
+<?php
+// Mostrar errores (útil en desarrollo)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Iniciar sesión
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Obtener el ID del usuario desde la sesión
+$user_id = $_SESSION['user_id'];
+
+// Datos de conexión a la base de datos
+$host = "localhost";
+$usuario = "TC2005B_601_1";
+$contrasena = "pAssWd_194742";
+$bd = "R_601_1";
+
+// Crear conexión
+$conn = new mysqli($host, $usuario, $contrasena, $bd);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Get user's coins (matching worldmap.php)
+$monedas = 0;
+$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
+$stmt->bind_param("s", $user_id); 
+if (!$stmt->execute()) {
+    die("Error al ejecutar la consulta: " . $stmt->error);
+}
+
+$stmt->bind_result($monedas);
+
+if (!$stmt->fetch()) {
+    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
+}
+
+$stmt->close();
+
+// Function to get user's owned items DIRECTLY from database
+function getUserItems($conn, $user_id) {
+    // REMOVEMOS la condición a.estado = 1 para incluir todos los artículos comprados
+    $sql = "SELECT a.ID_articulo, a.Img_articulo, a.tipo, a.estado 
+            FROM Articulo a 
+            INNER JOIN Avatar av ON a.ID_articulo = av.ID_articulo 
+            WHERE av.ID_usuario = ?";
+    
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Error al preparar la consulta: " . $conn->error);
+    }
+    
+    $stmt->bind_param("s", $user_id);
+    if (!$stmt->execute()) {
+        die("Error al ejecutar la consulta: " . $stmt->error);
+    }
+    
+    $result = $stmt->get_result();
+    $items = array();
+    while ($row = $result->fetch_assoc()) {
+        $items[] = $row;
+    }
+    $stmt->close();
+    
+    return $items;
+}
+
+// Get user's items
+$userItems = getUserItems($conn, $user_id);
+
+// Function to process image path for web display
+function processImagePath($dbImagePath) {
+    // Extract just the filename from the database path
+    if (strpos($dbImagePath, 'items/') !== false) {
+        $filename = substr($dbImagePath, strpos($dbImagePath, 'items/'));
+        return '../' . $filename;
+    }
+    
+    // Fallback: try to extract just the filename
+    $pathParts = explode('/', $dbImagePath);
+    $filename = end($pathParts);
+    return '../items/' . $filename;
+}
+
+// Function to determine item type based on database tipo field
+function determineItemType($filename, $dbTipo = null) {
+    $filename = strtolower($filename);
+    
+    // Check database tipo field first (using your enum values)
+    if ($dbTipo) {
+        switch($dbTipo) {
+            case 'h': // head items (hats, etc.)
+                return 'head';
+            case 'c': // cuerpo/chest items 
+                return 'hand'; // map to hand category for now
+            case 's': // shoes - could be mapped to a new category or hand
+                return 'hand'; 
+            case 'a': // accessories (bags, purses, etc.)
+                return 'bags';
+        }
+    }
+    
+    // Fallback to filename analysis if tipo is null
+    if (strpos($filename, 'hat') !== false || strpos($filename, 'head') !== false) {
+        return 'head';
+    } elseif (strpos($filename, 'bag') !== false || strpos($filename, 'purse') !== false) {
+        return 'bags';
+    } elseif (strpos($filename, 'cup') !== false || strpos($filename, 'hand') !== false || strpos($filename, 'chest') !== false) {
+        return 'hand';
+    }
+    
+    // Default category
+    return 'bags';
+}
+
+// Function to generate item name from filename
+function generateItemName($filename, $itemId) {
+    $baseName = pathinfo($filename, PATHINFO_FILENAME);
+    
+    // Convert common patterns to readable names
+    $nameMap = array(
+        'bag1' => 'Designer Bag #1',
+        'bag2' => 'Designer Bag #2', 
+        'hat1' => 'Classic Hat',
+        'hat2' => 'Asian Style Hat',
+        'cup' => 'Stanley Cup'
+    );
+    
+    if (isset($nameMap[$baseName])) {
+        return $nameMap[$baseName];
+    }
+    
+    // Generate generic name
+    return 'Item #' . $itemId;
+}
+
+// Organize items by type using database data
+$itemsByType = array(
+    'head' => array(),
+    'bags' => array(), 
+    'hand' => array()
+);
+
+foreach ($userItems as $item) {
+    $itemId = $item['ID_articulo'];
+    $dbImagePath = $item['Img_articulo'];
+    $dbTipo = $item['tipo'];
+    
+    // Process image path for web display
+    $webImagePath = processImagePath($dbImagePath);
+    
+    // Determine item type
+    $itemType = determineItemType($dbImagePath, $dbTipo);
+    
+    // Generate item name
+    $itemName = generateItemName($dbImagePath, $itemId);
+    
+    // Create item object for JavaScript
+    $itemObj = array(
+        'id' => 'item_' . $itemId,
+        'name' => $itemName,
+        'image' => $webImagePath,
+        'owned' => true, // Si está en la tabla Avatar, el usuario lo posee
+        'db_id' => $itemId,
+        'type' => $itemType
+    );
+    
+    $itemsByType[$itemType][] = $itemObj;
+}
+
+// Debug output
+echo "<!-- Debug: Usuario: $user_id -->\n";
+echo "<!-- Debug: Items encontrados: " . count($userItems) . " -->\n";
+foreach ($itemsByType as $type => $items) {
+    echo "<!-- Debug: $type items: " . count($items) . " -->\n";
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avatar </title>
+    <title>Avatar - Educación Matemáticas</title>
+    <link rel="stylesheet" href="worldmap.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -22,23 +215,23 @@
             overflow: hidden;
         }
 
-        /* Header Styles - Smaller */
+        /* Header Styles - Matching worldmap.php */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0px 50px;
+            padding: 0px 70px;
             background-color: white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             font-family: 'Poppins', sans-serif;
-            font-size: 20px; 
+            font-size: 24px; 
             font-weight: bold; 
             color: #333;
-            height: 70px;
+            height: 62px;
         }
 
         h1 {
-            font-size: 23px;
+            font-size: 25px;
             font-weight: bold;
             font-style: normal;
             margin: 0;
@@ -46,8 +239,9 @@
 
         nav {
             display: flex;
-            gap: 15px;
-            font-size: 25px;
+            gap: 20px;
+            font-size: medium;
+            align-items: center;
         }
 
         nav a {
@@ -71,6 +265,28 @@
             height: auto;
             border-radius: 50%; 
             object-fit: cover;
+        }
+
+        /* Currency display (matching worldmap.php) */
+        .currency {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 215, 0, 0.1);
+            padding: 8px 12px;
+            border-radius: 50px;
+            border: 2px solid #FFD700;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .currency img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .currency span {
+            font-size: 16px;
         }
 
         /* Main Container */
@@ -324,6 +540,15 @@
             color: #666;
         }
 
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem;
+            border-left: 4px solid #c62828;
+        }
+
         /* Overlay */
         .overlay {
             position: fixed;
@@ -392,11 +617,11 @@
     <header>
         <h1>π sheep</h1>
         <nav>
-            <a href="worldmap.php">home</a>
-            <a href="arena/arena.html">arena</a>
-            <a href="avatar.html">avatar</a>
-            <a href="shop.html">shop</a>
-            <div class="user-icon"><img src="user.svg" alt="User icon"></div>
+            <a href="../worldmap.php">home</a>
+            <a href="../arena/arena.html">arena</a>
+            <a href="avatar.php">avatar</a>
+            <a href="../tienda/tienda.php">shop</a>
+            <div class="user-icon"><img src="../imgWEB/user.svg" alt="User icon"></div>
         </nav>
     </header>
 
@@ -446,24 +671,12 @@
     </div>
 
     <script>
-        // Sample data for available items
-        const availableItems = {
-            head: [
-                { id: 'hat1', name: 'Asian Hat', image: 'items/hat2.svg', owned: true },
-                { id: 'hat2', name: 'Cowboy Hat', image: 'items/hat1.svg', owned: true },
-                { id: 'hat3', name: 'Top Hat', image: 'items/hat3.svg', owned: false }
-            ],
-            bags: [
-                { id: 'bag1', name: 'Purse YSL', image: 'items/bag1.svg', owned: true },
-                { id: 'bag2', name: 'Purse LV', image: 'items/bag2.svg', owned: true },
-                { id: 'bag3', name: 'Backpack', image: 'items/bag3.svg', owned: false }
-            ],
-            hand: [
-                { id: 'hand1', name: 'Stanley Cup', image: 'items/cup.svg', owned: true },
-                { id: 'hand2', name: 'Coffee Mug', image: 'items/mug.svg', owned: false },
-                { id: 'hand3', name: 'Phone', image: 'items/phone.svg', owned: true }
-            ]
-        };
+        // Get user's items from PHP
+        const availableItems = <?php echo json_encode($itemsByType); ?>;
+        
+        // Add debug logging
+        console.log('User items loaded:', availableItems);
+        console.log('Current user ID: <?php echo $user_id; ?>');
 
         // Current equipped items
         let currentItems = {
@@ -536,13 +749,22 @@
             }, category, true);
             itemsGrid.appendChild(noneCard);
 
-            // Add items
+            // Add items - only show owned items
             items.forEach(item => {
                 if (item.owned) {
                     const itemCard = createItemCard(item, category);
                     itemsGrid.appendChild(itemCard);
                 }
             });
+            
+            // Show message if no items available
+            if (items.length === 0) {
+                const noItemsMsg = document.createElement('div');
+                noItemsMsg.className = 'no-items-message';
+                noItemsMsg.style.cssText = 'grid-column: span 2; text-align: center; color: #666; padding: 2rem;';
+                noItemsMsg.innerHTML = '<p>No items available in this category.</p><p>Visit the shop to purchase items!</p>';
+                itemsGrid.appendChild(noItemsMsg);
+            }
         }
 
         function createItemCard(item, category, isNone = false) {
@@ -557,7 +779,7 @@
 
             card.innerHTML = `
                 <div class="item-image">
-                    ${!isNone && item.image ? `<img src="${item.image}" alt="${item.name}">` : '🚫'}
+                    ${!isNone && item.image ? `<img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='../items/placeholder.svg'; console.log('Failed to load: ${item.image}');">` : '🚫'}
                 </div>
                 <div class="item-name">${item.name}</div>
                 <div class="item-status">${item.owned ? 'Owned' : 'Not Owned'}</div>
@@ -594,14 +816,30 @@
                 } else {
                     element.src = imageSrc;
                     element.style.display = 'block';
+                    
+                    // Handle image load errors with better logging
+                    element.onerror = function() {
+                        console.error('Failed to load avatar image:', imageSrc);
+                        console.log('Trying fallback image path...');
+                        
+                        // Try different path combinations
+                        const fallbackPaths = [
+                            imageSrc.replace('../items/', './items/'),
+                            imageSrc.replace('../items/', 'items/'),
+                            '../items/placeholder.svg'
+                        ];
+                        
+                        this.onerror = null; // Prevent infinite loop
+                        this.src = fallbackPaths[0];
+                    };
                 }
             }
         }
 
-        // Initialize with some default items
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            // You can set default equipped items here
-            // selectItem('hat1', 'head', 'items/hat2.svg');
+            console.log('Avatar system initialized');
+            console.log('Available items by category:', availableItems);
         });
     </script>
 </body>
