@@ -1,0 +1,213 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(229, 229, 229);
+  
+}
+/* Encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 70px;
+  background-color: white;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px; 
+  font-weight: bold; 
+  color: #333;
+  
+}
+
+h1{
+  font-size: 25px;
+  font-weight: bold;
+  font-style: normal;;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  font-size:large;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-icon {
+width: 40px;
+height: 33px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.user-icon img {
+width: 100%;
+height: auto;
+border-radius: 50%; 
+object-fit: cover;
+}
+
+.titulo h1 {
+font-family: "DM Serif Display", serif;
+font-size: 100px;
+text-align: center;
+border-radius: 100rem;
+}
+
+.item{
+display: flex;
+margin-bottom: 5rem;
+}
+.item img{
+width: 25%;
+height: 20%;
+background-color: rgb(185, 184, 184);
+border-radius: 30px;
+margin-right: 10em;
+transition: transform 0.1s ease-in-out;
+}
+.item img:hover {
+transform: scale(1.1);
+}
+.store-container{
+margin-left: 10rem;
+}
+
+.item-details p{
+font-size: 30px;
+font-weight: bold;
+}
+.item-details h2{
+color: black;
+font-size: 40px;
+font-family: "DM Serif Display", serif;;
+}
+.boton_compra {
+position: absolute;
+background-color: #FFD700;
+border: 4px solid #333;
+border-radius: 350px;
+font-size: 25px;
+color: #222222;
+padding: 10px 50px;
+cursor: pointer;
+box-shadow: 0 14px #685801;
+font-family: "Luckiest Guy",cursive;  
+}
+.boton_compra:active {
+box-shadow: 0 4px #ccac00;
+transform: translateY(4px);
+}
+
+.item-details img{
+
+width: 5%;
+height: 5%;
+background-color: rgb(229, 229, 229);
+border-radius: 0px;
+margin-right: 0em;
+
+}
+#preview-container img {
+  position: fixed;
+  z-index: 999;
+  pointer-events: none; /* Evita que molesten al hacer clic */
+}
+
+#preview-container img.preview-hat {
+  position: fixed;
+  top: 35%;
+  left: 59%;
+  width: 40%;
+  z-index: 999;
+  pointer-events: none; 
+
+}
+#preview-container img.preview-bag {
+  position: fixed;
+  top: 65%;
+  left: 75%;
+  width: 20%; /* Tamaño más pequeño */
+  z-index: 999;
+  pointer-events: none;
+}
+#preview-container img.preview-hand {
+  position: fixed;
+  top: 65%;
+  left: 75%;
+  width: 20%;
+  z-index: 999;
+  pointer-events: none;
+}
+.avatar img[data-tipo="sheep"]{
+width: 70%;
+position: fixed;
+top: 25%; left: 45%
+}
+
+.avatar img[data-tipo="monedas"]{
+  width: 10%;
+  position: fixed;
+  top: 80%; left: 65%
+}
+
+.monedas-container {
+  position: fixed;
+  top: 20%;   /* Ajusta la posición vertical */
+  left: 80%;  /* Ajusta la posición horizontal */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white; /* Opcional: fondo blanco */
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave */
+  z-index: 1000; /* Encima del resto */
+  transform: scale(1.8);
+}
+
+
+.moneda-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.moneda-cantidad {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.monedas-container-fixed {
+  position: fixed;
+  top: 80%;
+  left: 65%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8); /* Opcional */
+  padding: 5px 10px;
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.monedas-container-fixed .moneda-icon {
+  width: 24px;
+  height: auto;
+  margin-right: 5px;
+}
+
+.monedas-container-fixed .moneda-cantidad {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}

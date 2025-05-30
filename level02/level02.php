@@ -1,0 +1,107 @@
+<?php
+// Mostrar errores (útil en desarrollo)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Iniciar sesión
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Obtener el ID del usuario desde la sesión
+$user_id = $_SESSION['user_id'];
+
+// Datos de conexión a la base de datos
+$host = "localhost";
+$usuario = "TC2005B_601_1";
+$contrasena = "pAssWd_194742";
+$bd = "R_601_1";
+
+// Crear conexión
+$conn = new mysqli($host, $usuario, $contrasena, $bd);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// ... (código anterior)
+
+$monedas = 0;
+$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
+// Cambia "s" por "i" si ID_usuario es numérico
+$stmt->bind_param("s", $user_id); 
+if (!$stmt->execute()) {
+    die("Error al ejecutar la consulta: " . $stmt->error);
+}
+
+$stmt->bind_result($monedas);
+
+if (!$stmt->fetch()) {
+    // Mostrar error detallado
+    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
+}
+
+$stmt->close();
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa USA - Educación Matemáticas</title>
+    <link rel="stylesheet" href="level02.css">
+</head>
+<body>
+    <header>
+        <h1>π sheep</h1>
+        <nav>
+            <a href="../worldmap.php">home</a>
+            <a href="math-arena.html">arena</a>
+            <a href="avatar.html">avatar</a>
+            <a href="shop.html">shop</a>
+            <div class="user-icon"><img src="img_level02/user.svg" alt="User icon"></div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="map-container">
+            <a href="../worldmap.php" class="return-button"> Back </a>
+            <img src="img_level02/map_usa.svg" alt="Mapa de USA" class="map_usa">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+
+            <!-- Banderas como botones -->
+            <a href="../preguntas/level.php?nivel=N019" class="img bean"><img src="img_level02/bean_02.svg" alt="Bean" style="width: 140px;"></a>
+            <a href="../preguntas/level.php?nivel=N014" class="img dolar"><img src="img_level02/dolar_02.svg" alt="Dolar" style="width: 150px;"></a>
+            <a href="../preguntas/level.php?nivel=N020" class="img estatua"><img src="img_level02/estatua_02.svg" alt="Estatua" style="width: 255px;"></a>
+            <a href="../preguntas/level.php?nivel=N016" class="img hotdog"><img src="img_level02/hotdog_02.svg" alt="Hotdog" style="width: 130px;"></a>
+            <a href="../preguntas/level.php?nivel=N018" class="img pizza"><img src="img_level02/pizza_02.svg" alt="Pizza" style="width: 150px;"></a>
+            <a href="../preguntas/level.php?nivel=N011" class="img puente"><img src="img_level02/puente_02.svg" alt="Puente" style="width: 160px;"></a>
+            <a href="../preguntas/level.php?nivel=N012" class="img rock"><img src="img_level02/rock_02.svg" alt="Rock" style="width: 150px;"></a>
+            <a href="../preguntas/level.php?nivel=N017" class="img sombrero"><img src="img_level02/sombrero_02.svg" alt="Sombrero" style="width: 150px;"></a>
+            <a href="../preguntas/level.php?nivel=N013" class="img space"><img src="img_level02/space_02.svg" alt="Space" style="width: 200px;"></a>
+            <a href="../preguntas/level.php?nivel=N015" class="img taxi"><img src="img_level02/taxi_02.svg" alt="Taxi" style="width: 150px;"></a>
+
+            <!-- currency -->
+            <div class="currency">
+                <img src="img_level02/coin.png" alt="Moneda">
+                <span><?php echo $monedas; ?></span>
+            </div>
+        </div>
+
+        
+    </main>
+</body>
+</html>

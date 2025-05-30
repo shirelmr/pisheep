@@ -1,0 +1,143 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(229, 229, 229);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 70px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    min-width: 1500px;
+}
+
+h1 {
+    font-size: 25px;
+    font-weight: bold;
+    min-width: 800px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    font-size: large;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* opcional, si quieres que se vea redondo */
+    object-fit: cover;
+}
+
+.map-container {
+    position: relative;
+    width: 100vw;
+    height: 91.9vh;
+    min-width: 1600px;
+}
+
+.map_mx {
+    width: 90%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.img {
+    position: absolute;
+    width: 140px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.img img {
+    width: 140px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.img:hover {
+    transform: scale(1.1);
+}
+
+/* Posiciones afinadas */
+.camellos { top: 56%; left: 23%;  }
+.casa { top: 31%; left: 17%; }
+.chocolatera { top: 9%; left: 9%; }
+.flower { top: 18%; left: 24%; }
+.food { top: 55%; left: 13%; }
+.kaaba { top: 45%; left: 29%; }
+.mosaico { top: 75%; left: 21%; }
+.paloma { top: 60%; left: 35.5%; }
+.persona { top: 32%; left: 7%; }
+.smooking { top: 60%; left: 42%; }
+
+.return-button {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    background-color: #f9c00d;
+    color: rgb(25, 24, 24);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 0.7rem;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    z-index: 10;
+}
+
+.return-button:hover {
+    background-color: #e6ae00;
+}
+
+.currency {
+    position: absolute; /* Lo mantiene dentro del mapa */
+    bottom: 5%; /* Ajusta la posición vertical */
+    left: 2%; /* Ajusta la posición horizontal */
+    display: flex; /* Para alinear la moneda y el texto */
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.currency img {
+    width: 40px;
+    height: auto;
+    margin-right: 8px;
+}
+.currency {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    bottom: 20px; /* Ajustado para pantalla completa */
+    left: 20px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
