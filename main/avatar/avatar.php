@@ -132,7 +132,7 @@ function generateItemName($filename, $itemId) {
     
     // Convert common patterns to readable names
     $nameMap = array(
-        'bag1' => 'Designer Bag #1',
+        'bag1' => 'YSL Bag #1',
         'bag2' => 'Designer Bag #2', 
         'hat1' => 'Classic Hat',
         'hat2' => 'Asian Style Hat',
@@ -227,7 +227,7 @@ $conn->close();
             font-size: 24px; 
             font-weight: bold; 
             color: #333;
-            height: 62px;
+            height: 70px;
         }
 
         h1 {
@@ -252,8 +252,8 @@ $conn->close();
         }
 
         .user-icon {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40spx;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -333,7 +333,7 @@ $conn->close();
             align-items: center;
             justify-content: center;
             gap: 3rem;
-            margin-top: 5rem;
+            margin-top: 12rem;
             width: 100%;
             max-width: 1000px;
         }
@@ -372,22 +372,22 @@ $conn->close();
         }
 
         .avatar-item.hat {
-            top: -15px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 150px;
         }
 
         .avatar-item.bag {
-            bottom: 35px;
-            right: -20px;
-            width: 55px;
+            bottom: -50px;
+            right: -30px;
+            width: 230px;
         }
 
         .avatar-item.hand {
             bottom: 55px;
             left: -25px;
-            width: 40px;
+            width: 10px;
         }
 
         /* Control Buttons */
