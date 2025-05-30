@@ -1,0 +1,456 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Jost:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(40, 25%, 72%);
+  --white-color: hsl(40, 31%, 89%);
+  --black-color: hsl(40, 14%, 14%);
+  --body-color: #b5d6d6;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Abril Fatface";
+  --second-font: "Cormorant Garamond", serif;
+  --biggest-font-size: 3.5rem;
+  --bigger-font-size: 2.75rem;
+  --big-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 6rem;
+    --bigger-font-size: 4.5rem;
+    --big-font-size: 2rem;
+    --normal-font-size: 1rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  max-width: 1657px;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--black-color);
+  min-width: 1700px;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  width: 90%;
+  min-width: 1500px;
+  margin-inline: 1.5rem;
+  left: 0.4rem;
+  right: 50rem;
+
+  overflow: hidden;
+  overflow-y: hidden;
+}
+
+.main {
+  overflow: hidden;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: relative;
+  top: 8rem;
+  left: 0rem;
+  background-color: transparent;
+  z-index: var(--z-fixed);
+}
+
+.nav{
+  display: flex;
+  min-width: 15oopx;
+  left: 500px;
+  right: 0px;
+  bottom: 7rem;
+  position: relative;
+  min-width: 100px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav__menu {
+  bottom: 20rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 77px;
+  margin-left: 0px;
+}
+
+.nav__list {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+}
+
+.aboutUs_button {
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  box-shadow: 0 4px 12px #0000001a;
+  color: #000000;
+  background-color: #b4b2b6;
+  padding: 0.5rem 1rem;
+  border-radius: 0.7rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  top: 90px;
+}
+
+.aboutUs_button:hover {
+  background-color: #ffb81f;
+  transform: scale(1.1);
+}
+
+
+/* Add shadow header */
+.shadow-header {
+  background-color: var(--body-color);
+  box-shadow: 0 2px 16px hsla(40, 24%, 4%, .1);
+}
+
+/*=============== HOME ===============*/
+.home {
+  position: relative;
+}
+
+.home__container {
+  padding-top: 9.5rem;
+  min-height: 100vh;
+  position: relative;
+  left: -10%;
+  min-width: 120%;
+  height: 100%;
+}
+
+.home__data {
+  position: relative;
+  z-index: var(--z-tooltip);
+  left: 20%;
+  min-width: 90%;
+}
+
+.home__subtitle {
+  font-family: var(--second-font);
+  margin-bottom: .5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  margin-bottom: 2rem;
+  font-size: 30px;
+}
+
+.home__title {
+  font-size: var(--biggest-font-size);
+  font-family: var(--second-font);
+  line-height: 100%;
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 50px;
+}
+
+.home__title span {
+  font-size: var(--bigger-font-size);
+  font-size: 90px;
+}
+
+.start-button {
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  top: 1rem;
+  right: 0rem;
+  background-color: #f9c00d;
+  color: #000000;
+  padding: 12px 26px;
+  border-radius: 0.7rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px #636363;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.start-button:hover {
+  background-color: #e6ae00;
+  transform: scale(1.50);
+}
+
+.home__cloud-1, 
+.home__cloud-2 {
+  position: absolute;
+  width: 150px;
+}
+
+.home__cloud-1 {
+  top: 6rem;
+  right: 1rem;
+  animation: cloud-1 8s linear infinite;
+}
+
+.home__cloud-2 {
+  top: 25rem;
+  left: .5rem;
+  animation: cloud-2 8s linear infinite;
+}
+
+.home__images {
+  /* overflow: hidden; */
+  height: 100%;
+}
+
+.home__images div {
+  max-width: initial;
+  width: 650px;
+  height: 300px;
+  background-size: 1000px 100%;
+  position: absolute;
+  left: 0;
+}
+
+.home__waves-1 {
+  bottom: 0;
+  animation: waves-1 4s linear infinite;
+}
+
+.home__waves-2 {
+  bottom: -2rem;
+  animation: waves-2 4s linear infinite;
+}
+
+.home__waves-3 {
+  bottom: 2rem;
+  animation: waves-1 4s linear infinite;
+}
+
+.home__ship {
+  width: 300px;
+  position: absolute;
+  bottom: 3.5rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  transform-origin: center center;
+  animation: ship 2s linear infinite;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Animated Clouds */
+@keyframes cloud-1 {
+  0% {
+    margin-right: -1000px;
+  }
+  100% {
+    margin-right: 100%;
+  }
+}
+
+@keyframes cloud-2 {
+  0% {
+    margin-left: 100%;
+  }
+  100% {
+    margin-left: -1000px;
+  }
+}
+
+/* Animated waves */
+@keyframes waves-1 {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}
+
+@keyframes waves-2 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+/* Animated ship */
+@keyframes ship {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(0) rotate(-8deg);
+  }
+  40% {
+    transform: translateY(4px) rotate(-8deg);
+  }
+  85% {
+    transform: translateY(1px) rotate(8deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 300px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .home__title {
+    font-size: 3rem;
+  }
+  .home__title span {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 350px) and (max-height: 680px) {
+  .home__container {
+    height: 750px;
+  }
+  .home__images div {
+    width: 100%;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+  .home__images div {
+    width: 100%;
+  }
+  .home__ship {
+    width: 400px;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+  }
+  .nav__toggle, 
+  .nav__close {
+    display: none;
+  }
+  .nav__list {
+    flex-direction: row;
+    column-gap: 4.5rem;
+  }
+
+  .home__container {
+    height: 860px; /* Comment for full screen */
+    padding-top: 11.5rem;
+  }
+  .home__title {
+    margin-bottom: 3rem;
+  }
+  .home__button, .home__button::after {
+    border-width: 4px;
+  }
+  .home__button::after {
+    bottom: -12px;
+  }
+  .home__cloud-1, .home__cloud-2 {
+    width: 250px;
+  }
+  .home__cloud-2 {
+    top: 20rem;
+  }
+  .home__images div {
+    height: 375px;
+    background-size: 100vw 100%;
+  }
+  .home__waves-1 {
+    bottom: -2.5rem;
+  }
+  .home__waves-2 {
+    bottom: -2rem;
+  }
+  .home__waves-3 {
+    bottom: 5rem;
+  }
+  .home__ship {
+    width: 630px;
+    left: 30rem;
+  }
+
+  /* Animated waves desktop */
+  @keyframes waves-1 {
+    0% {
+      background-position-x: 100vw;
+    }
+    100% {
+      background-position-x: 0;
+    }
+  }
+
+  @keyframes waves-2 {
+    0% {
+      background-position-x: 0;
+    }
+    100% {
+      background-position-x: 100vw;
+    }
+  }
+}
+
+@media screen and (min-width: 1150px) and (min-height: 1000px) {
+  .home__container {
+    display: grid;
+    height: 100vh;
+  }
+  .home__data {
+    align-self: center;
+  }
+}

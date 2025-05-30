@@ -1,0 +1,98 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #b5d6d6;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    position: relative;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    z-index: 2;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2.1rem;
+}
+
+h4 {
+    margin: 0.8rem 0 0.3rem;
+    color: #444;
+    font-weight: 300;
+    font-size:1rem ;
+}
+
+
+input {
+    width: 90%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.6rem;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #f9c00d;
+    outline: none;
+}
+
+button {
+    width: 80%;
+    padding: 0.8rem;
+    background: #f9c00d;
+    color: #fff;
+    border: none;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #e6ae00;
+}
+
+
+/* Ajusta la imagen para que quede pegada abajo */
+.waves {
+    width: 100vw;
+    height: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1; /* Asegura que no tape el contenido */
+}
+
+/* Estilos para el enlace de registro */
+.signup-link {
+    text-decoration: none;
+    color: #f9c00d;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+    color: #e6ae00;
+    text-decoration: underline;
+}
+
+/* Centra el texto final */
+.container h4:last-of-type {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+}
