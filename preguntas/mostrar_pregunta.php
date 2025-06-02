@@ -77,10 +77,10 @@ document.querySelectorAll('.op img').forEach(function(img) {
 
             setTimeout(function() {
                 <?php if ($siguiente_tipo === 'fin') : ?>
-                    window.location.href = 'sumar_monedas.php';
-                <?php else : ?>
-                    window.location.href = 'level.php?tipo=<?php echo $siguiente_tipo; ?>&nivel=<?php echo $id_nivel; ?>';
-                <?php endif; ?>
+        window.location.href = 'sumar_monedas.php?nivel=<?php echo $id_nivel; ?>';
+            <?php else : ?>
+        window.location.href = 'level.php?tipo=<?php echo $siguiente_tipo; ?>&nivel=<?php echo $id_nivel; ?>';
+            <?php endif; ?>
             }, 1000);
         } else {
             this.style.border = '4px solid red';
