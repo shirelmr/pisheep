@@ -135,6 +135,12 @@
   <script>
     let questionNumber = <?php echo ($tipo === 'A') ? 1 : 2; ?>;
     
+    // Get current score from URL parameter or initialize
+    function getCurrentScore() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return parseInt(urlParams.get('score')) || 0;
+    }
+    
     function handleAnswer(img) {
       console.log('Answer clicked!', img); // Debug log
       
@@ -143,6 +149,14 @@
       const resultMessage = document.getElementById('result-message');
       
       console.log('Is correct?', correct); // Debug log
+      
+      // Get current score and update if correct
+      let currentScore = getCurrentScore();
+      if (correct) {
+        currentScore++;
+      }
+      
+      console.log('Current score:', currentScore, 'Question number:', questionNumber); // Debug log
       
       // Disable all answers
       document.querySelectorAll('img[data-correcta]').forEach(el => {
@@ -175,15 +189,21 @@
           
           // Check if game is over (2 questions)
           if (questionNumber >= 2) {
-            // Show final message and redirect
+            // Game over - check final score
             setTimeout(() => {
-              window.location.href = 'menu.php'; // Change this to your menu page
+              if (currentScore === 2) {
+                // User got both questions correct
+                window.location.href = 'win.html';
+              } else {
+                // User got 0 or 1 questions correct
+                window.location.href = 'lose.html';
+              }
             }, 1000);
             
           } else {
-            // Continue to next question
+            // Continue to next question with updated score
             setTimeout(() => {
-              window.location.href = "game.php?tipo=B";
+              window.location.href = "game.php?tipo=B&score=" + currentScore;
             }, 500);
           }
         }, 2000);
@@ -193,6 +213,7 @@
     
     // Debug: Check if answers loaded
     console.log('Found answers:', document.querySelectorAll('img[data-correcta]').length);
+    console.log('Starting score:', getCurrentScore());
   </script>
 </body>
 </html>
