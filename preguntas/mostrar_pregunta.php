@@ -30,7 +30,9 @@ if ($resultado_pregunta->num_rows > 0) {
     echo '<div class="que"><img src="' . $rutaImagen . '" alt="pregunta"></div>';
 
     // Mostrar opciones
-    $sql_opciones = "SELECT opcion_texto, es_correcta FROM Opcion WHERE ID_pregunta_ABC = '$id_pregunta'";
+    $sql_opciones = "SELECT opcion_texto, es_correcta FROM Opcion 
+                 WHERE ID_pregunta_ABC = '$id_pregunta' 
+                 ORDER BY RAND()";
     $resultado_opciones = $conn->query($sql_opciones);
 
     $clases_opciones = ["op1", "op2", "op3", "op4"];
