@@ -79,7 +79,7 @@ document.querySelectorAll('.op img').forEach(function(img) {
                 <?php if ($siguiente_tipo === 'fin') : ?>
                     window.location.href = 'sumar_monedas.php';
                 <?php else : ?>
-                    window.location.href = 'level.php?tipo=<?php echo $siguiente_tipo; ?>';
+                    window.location.href = 'level.php?tipo=<?php echo $siguiente_tipo; ?>&nivel=<?php echo $id_nivel; ?>';
                 <?php endif; ?>
             }, 1000);
         } else {

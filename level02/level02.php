@@ -30,29 +30,37 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// ... (código anterior)
-
+// Obtener monedas y progreso
 $monedas = 0;
-$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
-if (!$stmt) {
-    die("Error al preparar la consulta: " . $conn->error);
-}
-
-// Cambia "s" por "i" si ID_usuario es numérico
-$stmt->bind_param("s", $user_id); 
-if (!$stmt->execute()) {
-    die("Error al ejecutar la consulta: " . $stmt->error);
-}
-
-$stmt->bind_result($monedas);
-
+$progreso = 0;
+$stmt = $conn->prepare("SELECT monedas, progreso FROM Usuario WHERE ID_usuario = ?");
+$stmt->bind_param("s", $user_id);
+$stmt->execute();
+$stmt->bind_result($monedas, $progreso);
 if (!$stmt->fetch()) {
-    // Mostrar error detallado
-    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
+    die("No se encontró el usuario con ID: $user_id");
 }
-
 $stmt->close();
 
+// Arreglo con niveles 11 al 20
+$niveles = [
+    "N011", "N012", "N013", "N014", "N015",
+    "N016", "N017", "N018", "N019", "N020"
+];
+
+// Datos de imagen y clases
+$imagenes = [
+    "N011" => ["puente", "puente_02.svg", 160],
+    "N012" => ["rock", "rock_02.svg", 150],
+    "N013" => ["space", "space_02.svg", 200],
+    "N014" => ["dolar", "dolar_02.svg", 150],
+    "N015" => ["taxi", "taxi_02.svg", 150],
+    "N016" => ["hotdog", "hotdog_02.svg", 130],
+    "N017" => ["sombrero", "sombrero_02.svg", 150],
+    "N018" => ["pizza", "pizza_02.svg", 150],
+    "N019" => ["bean", "bean_02.svg", 140],
+    "N020" => ["estatua", "estatua_02.svg", 255]
+];
 ?>
 
 <!DOCTYPE html>
@@ -81,18 +89,25 @@ $stmt->close();
             <img src="img_level02/map_usa.svg" alt="Mapa de USA" class="map_usa">
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
+            <?php
+            foreach ($niveles as $i => $nivel) {
+                $desbloqueado = ($i + 10) <= $progreso; // niveles 11 a 20
+                $clase = $imagenes[$nivel][0];
+                $src = $imagenes[$nivel][1];
+                $width = $imagenes[$nivel][2];
+                $estilo = $width ? "style='width: {$width}px;'" : "";
 
-            <!-- Banderas como botones -->
-            <a href="../preguntas/level.php?nivel=N019" class="img bean"><img src="img_level02/bean_02.svg" alt="Bean" style="width: 140px;"></a>
-            <a href="../preguntas/level.php?nivel=N014" class="img dolar"><img src="img_level02/dolar_02.svg" alt="Dolar" style="width: 150px;"></a>
-            <a href="../preguntas/level.php?nivel=N020" class="img estatua"><img src="img_level02/estatua_02.svg" alt="Estatua" style="width: 255px;"></a>
-            <a href="../preguntas/level.php?nivel=N016" class="img hotdog"><img src="img_level02/hotdog_02.svg" alt="Hotdog" style="width: 130px;"></a>
-            <a href="../preguntas/level.php?nivel=N018" class="img pizza"><img src="img_level02/pizza_02.svg" alt="Pizza" style="width: 150px;"></a>
-            <a href="../preguntas/level.php?nivel=N011" class="img puente"><img src="img_level02/puente_02.svg" alt="Puente" style="width: 160px;"></a>
-            <a href="../preguntas/level.php?nivel=N012" class="img rock"><img src="img_level02/rock_02.svg" alt="Rock" style="width: 150px;"></a>
-            <a href="../preguntas/level.php?nivel=N017" class="img sombrero"><img src="img_level02/sombrero_02.svg" alt="Sombrero" style="width: 150px;"></a>
-            <a href="../preguntas/level.php?nivel=N013" class="img space"><img src="img_level02/space_02.svg" alt="Space" style="width: 200px;"></a>
-            <a href="../preguntas/level.php?nivel=N015" class="img taxi"><img src="img_level02/taxi_02.svg" alt="Taxi" style="width: 150px;"></a>
+                if ($desbloqueado) {
+                    echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";
+                } else {
+                    echo "<div class='img $clase bloqueado' title='Nivel bloqueado'>";
+                }
+
+                echo "<img src='img_level02/$src' alt='$clase' $estilo>";
+
+                echo $desbloqueado ? "</a>" : "</div>";
+            }
+            ?>
 
             <!-- currency -->
             <div class="currency">
@@ -100,8 +115,14 @@ $stmt->close();
                 <span><?php echo $monedas; ?></span>
             </div>
         </div>
-
-        
     </main>
+
+    <style>
+        .bloqueado img {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
 </body>
 </html>
