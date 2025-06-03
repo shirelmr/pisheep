@@ -34,23 +34,22 @@ if ($conn->connect_error) {
 $monedas = 0;
 $progreso = 0;
 $stmt = $conn->prepare("SELECT monedas, progreso FROM Usuario WHERE ID_usuario = ?");
-if (!$stmt) {
-    die("Error al preparar la consulta: " . $conn->error);
-}
-
-$stmt->bind_param("s", $user_id); 
-if (!$stmt->execute()) {
-    die("Error al ejecutar la consulta: " . $stmt->error);
-}
-
+$stmt->bind_param("s", $user_id);
+$stmt->execute();
 $stmt->bind_result($monedas, $progreso);
 if (!$stmt->fetch()) {
     die("No se encontró el usuario con ID: $user_id");
 }
 $stmt->close();
 
-// Niveles de level03.php, por ejemplo del 21 al 30
+// Arreglo con niveles 11 al 20
 $niveles = [
+    "N021", "N022", "N023", "N024", "N025",
+    "N026", "N027", "N028", "N029", "N030"
+];
+
+// Niveles de level03.php, por ejemplo del 21 al 30
+$imagenes = [
     "N021" => ["ave", "ave_03.svg", 193],
     "N022" => ["maracas", "maracas_03.svg", 0],
     "N023" => ["antifaz", "antifaz_03.svg", 190],
@@ -91,28 +90,22 @@ $niveles = [
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
             <?php
-            // Mostrar niveles con desbloqueo según progreso
-            foreach ($niveles as $nivel => $info) {
-                $clase = $info[0];
-                $imagen = $info[1];
-                $width = $info[2];
-
-                // La lógica para desbloquear: el nivel es numérico, ej: N021 -> 21
-                $numNivel = (int)substr($nivel, 1);
-
-                $desbloqueado = $numNivel <= $progreso;
-
-                $estilo = $width > 0 ? "style='width: {$width}px;'" : "";
+            foreach ($niveles as $i => $nivel) {
+                $desbloqueado = ($i + 20) <= $progreso; // niveles 11 a 20
+                $clase = $imagenes[$nivel][0];
+                $src = $imagenes[$nivel][1];
+                $width = $imagenes[$nivel][2];
+                $estilo = $width ? "style='width: {$width}px;'" : "";
 
                 if ($desbloqueado) {
                     echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";
-                    echo "<img src='img_level03/$imagen' alt='$clase' $estilo>";
-                    echo "</a>";
                 } else {
                     echo "<div class='img $clase bloqueado' title='Nivel bloqueado'>";
-                    echo "<img src='img_level03/$imagen' alt='$clase' $estilo>";
-                    echo "</div>";
                 }
+
+                echo "<img src='img_level03/$src' alt='$clase' $estilo>";
+
+                echo $desbloqueado ? "</a>" : "</div>";
             }
             ?>
 
