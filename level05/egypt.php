@@ -31,12 +31,20 @@ if ($conn->connect_error) {
 $monedas = 0;
 $progreso = 0;
 $stmt = $conn->prepare("SELECT monedas, progreso FROM Usuario WHERE ID_usuario = ?");
-$stmt->bind_param("s", $user_id);
-$stmt->execute();
-$stmt->bind_result($monedas, $progreso);
-$stmt->fetch();
-$stmt->close();
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
 
+$stmt->bind_param("s", $user_id); 
+if (!$stmt->execute()) {
+    die("Error al ejecutar la consulta: " . $stmt->error);
+}
+
+$stmt->bind_result($monedas, $progreso);
+if (!$stmt->fetch()) {
+    die("No se encontró el usuario con ID: $user_id");
+}
+$stmt->close();
 // Definir niveles de Egipto (N041–N050)
 $niveles = [
     "N041" => ["camello", "camello_05.svg", 220],
@@ -86,13 +94,19 @@ $niveles = [
             <img src="img/map_egypt.svg" alt="Mapa de Egipto" class="map_mx">
 
             <?php
+            // Mostrar niveles con desbloqueo según progreso
             foreach ($niveles as $nivel => $info) {
                 $clase = $info[0];
                 $imagen = $info[1];
                 $width = $info[2];
 
+                // La lógica para desbloquear: el nivel es numérico, ej: N021 -> 21
                 $numNivel = (int)substr($nivel, 1);
+
                 $desbloqueado = $numNivel <= $progreso;
+
+                $estilo = $width > 0 ? "style='width: {$width}px;'" : "";
+
 
                 if ($desbloqueado) {
                     echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";

@@ -27,14 +27,23 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// Obtener monedas y progreso del usuario
+// Obtener monedas y progreso
 $monedas = 0;
 $progreso = 0;
 $stmt = $conn->prepare("SELECT monedas, progreso FROM Usuario WHERE ID_usuario = ?");
-$stmt->bind_param("s", $user_id);
-$stmt->execute();
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
+$stmt->bind_param("s", $user_id); 
+if (!$stmt->execute()) {
+    die("Error al ejecutar la consulta: " . $stmt->error);
+}
+
 $stmt->bind_result($monedas, $progreso);
-$stmt->fetch();
+if (!$stmt->fetch()) {
+    die("No se encontró el usuario con ID: $user_id");
+}
 $stmt->close();
 
 // Definir niveles de Francia (N031–N040)
