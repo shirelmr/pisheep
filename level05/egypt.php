@@ -13,55 +13,60 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Obtener el ID del usuario desde la sesión
 $user_id = $_SESSION['user_id'];
 
-// Datos de conexión a la base de datos
+// Conexión a la base de datos
 $host = "localhost";
 $usuario = "TC2005B_601_1";
 $contrasena = "pAssWd_194742";
 $bd = "R_601_1";
 
-// Crear conexión
 $conn = new mysqli($host, $usuario, $contrasena, $bd);
 
-// Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
 
-// ... (código anterior)
-
+// Obtener monedas y progreso
 $monedas = 0;
-$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
-if (!$stmt) {
-    die("Error al preparar la consulta: " . $conn->error);
-}
-
-// Cambia "s" por "i" si ID_usuario es numérico
-$stmt->bind_param("s", $user_id); 
-if (!$stmt->execute()) {
-    die("Error al ejecutar la consulta: " . $stmt->error);
-}
-
-$stmt->bind_result($monedas);
-
-if (!$stmt->fetch()) {
-    // Mostrar error detallado
-    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
-}
-
+$progreso = 0;
+$stmt = $conn->prepare("SELECT monedas, progreso FROM Usuario WHERE ID_usuario = ?");
+$stmt->bind_param("s", $user_id);
+$stmt->execute();
+$stmt->bind_result($monedas, $progreso);
+$stmt->fetch();
 $stmt->close();
 
+// Definir niveles de Egipto (N041–N050)
+$niveles = [
+    "N041" => ["camello", "camello_05.svg", 220],
+    "N042" => ["esfinge", "esfinge_05.svg", 230],
+    "N043" => ["jarron", "jarron_05.svg", 230],
+    "N044" => ["mujer", "mujer_05.svg", 230],
+    "N045" => ["pergamino", "pergamino_05.svg", 230],
+    "N046" => ["piramides", "piramides_05.svg", 230],
+    "N047" => ["roca", "roca_05.svg", 230],
+    "N048" => ["templo", "templo_05.svg", 230],
+    "N049" => ["tut", "tut_05.svg", 230],
+    "N050" => ["gato", "gato_05.svg", 270]
+];
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Egipto</title>
     <link rel="stylesheet" href="egypt.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .bloqueado img {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -77,28 +82,34 @@ $stmt->close();
 
     <main>
         <div class="map-container">
-            <a href="../worldmap.php" class="return-button"> Back </a>
+            <a href="../worldmap.php" class="return-button">Back</a>
             <img src="img/map_egypt.svg" alt="Mapa de Egipto" class="map_mx">
-            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
-            <!-- Íconos con clases y estructura de México -->
-<a href="../preguntas/level.php?nivel=N041" class="img camello"><img src="img/camello_05.svg" alt="camello" style="width: 220px;"></a>
-<a href="../preguntas/level.php?nivel=N042" class="img esfinge"><img src="img/esfinge_05.svg" alt="esfinge" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N043" class="img jarron"><img src="img/jarron_05.svg" alt="jarron" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N044" class="img mujer"><img src="img/mujer_05.svg" alt="mujer" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N045" class="img pergamino"><img src="img/pergamino_05.svg" alt="pergamino" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N046" class="img piramides"><img src="img/piramides_05.svg" alt="piramides" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N047" class="img roca"><img src="img/roca_05.svg" alt="roca" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N048" class="img templo"><img src="img/templo_05.svg" alt="templo" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N049" class="img tut"><img src="img/tut_05.svg" alt="persona" style="width: 230px;"></a>
-<a href="../preguntas/level.php?nivel=N050" class="img gato"><img src="img/gato_05.svg" alt="gato" style="width: 270px;"></a>
+            <?php
+            foreach ($niveles as $nivel => $info) {
+                $clase = $info[0];
+                $imagen = $info[1];
+                $width = $info[2];
 
-            <!-- Botón back -->
+                $numNivel = (int)substr($nivel, 1);
+                $desbloqueado = $numNivel <= $progreso;
+
+                if ($desbloqueado) {
+                    echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";
+                    echo "<img src='img/$imagen' alt='$clase' style='width: {$width}px;'>";
+                    echo "</a>";
+                } else {
+                    echo "<div class='img $clase bloqueado' title='Nivel bloqueado'>";
+                    echo "<img src='img/$imagen' alt='$clase' style='width: {$width}px;'>";
+                    echo "</div>";
+                }
+            }
+            ?>
+
             <div class="currency">
                 <img src="img/coin.png" alt="Moneda">
                 <span><?php echo $monedas; ?></span>
             </div>
-        
         </div>
     </main>
 </body>
