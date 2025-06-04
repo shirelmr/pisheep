@@ -33,25 +33,40 @@ if ($conn->connect_error) {
 // ... (código anterior)
 
 $monedas = 0;
-$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
+$progreso = 0;
+$stmt = $conn->prepare("SELECT monedas, progreso FROM Usuario WHERE ID_usuario = ?");
 if (!$stmt) {
     die("Error al preparar la consulta: " . $conn->error);
 }
 
-// Cambia "s" por "i" si ID_usuario es numérico
 $stmt->bind_param("s", $user_id); 
 if (!$stmt->execute()) {
     die("Error al ejecutar la consulta: " . $stmt->error);
 }
 
-$stmt->bind_result($monedas);
-
+$stmt->bind_result($monedas, $progreso);
 if (!$stmt->fetch()) {
-    // Mostrar error detallado
-    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
+    die("No se encontró el usuario con ID: $user_id");
 }
-
 $stmt->close();
+
+// Definir niveles UK (N061–N070)
+$niveles = [
+    "N081", "N082", "N083", "N084", "N085",
+    "N086", "N087", "N088", "N089", "N090"
+];
+$imagenes = [
+    "N081" => ["abanico", "abanico_09.svg", 300],
+    "N082" => ["arrozjap", "arrozjap_09.svg", 300],
+    "N083" => ["conejo", "conejo_09.svg", 300],
+    "N084" => ["gato", "gato_09.svg", 300],
+    "N085" => ["karate", "karate_09.svg", 300],
+    "N086" => ["mujer", "mujer_09.svg", 300],
+    "N087" => ["peces", "peces_09.svg", 300],
+    "N088" => ["sushi", "sushi_09.svg", 300],
+    "N089" => ["templojap", "templojap_09.svg", 300],
+    "N090" => ["torre", "torre_09.svg", 300]
+];
 
 ?>
 
@@ -62,6 +77,13 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa Japon - Educación Matemáticas</title>
     <link rel="stylesheet" href="japon.css">
+    <style>
+        .bloqueado img {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -82,7 +104,7 @@ $stmt->close();
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 
-            <!-- Banderas como botones -->
+            <!-- Banderas como botones 
             <a href="../preguntas/level.php?nivel=N081" class="img abanico"><img src="abanico_09.svg" alt="Abanico"></a>
             <a href="../preguntas/level.php?nivel=N082" class="img arrozjap"><img src="arrozjap_09.svg" alt="ArrozJap"></a>
             <a href="../preguntas/level.php?nivel=N083" class="img conejo"><img src="conejo_09.svg" alt="Conejo"></a>
@@ -94,7 +116,29 @@ $stmt->close();
             <a href="../preguntas/level.php?nivel=N089" class="img templojap"><img src="templojap_09.svg" alt="TemploJap"></a>
             <a href="../preguntas/level.php?nivel=N090" class="img torre"><img src="torre_09.svg" alt="Torre"></a>
 
-            <!-- currency -->
+             currency -->
+
+            <?php
+    foreach ($niveles as $i => $nivel) {
+        // Lógica para desbloquear nivel: progreso debe ser >= 60 + índice
+        $desbloqueado = ($i + 80) <= $progreso;
+
+        $clase = $imagenes[$nivel][0];
+        $src = $imagenes[$nivel][1];
+        $width = $imagenes[$nivel][2];
+        $estilo = $width ? "style='width: {$width}px;'" : "";
+
+        if ($desbloqueado) {
+            echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";
+        } else {
+            echo "<div class='img $clase bloqueado' title='Nivel bloqueado'>";
+        }
+
+        echo "<img src='$src' alt='$clase' $estilo>";
+
+        echo $desbloqueado ? "</a>" : "</div>";
+    }
+    ?>
             <div class="currency">
                 <img src="coin.png" alt="Moneda">
                 <span><?php echo $monedas; ?></span>

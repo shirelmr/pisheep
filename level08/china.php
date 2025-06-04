@@ -33,25 +33,42 @@ if ($conn->connect_error) {
 // ... (código anterior)
 
 $monedas = 0;
-$stmt = $conn->prepare("SELECT monedas FROM Usuario WHERE ID_usuario = ?");
+$progreso = 0;
+$stmt = $conn->prepare("SELECT monedas, progreso FROM Usuario WHERE ID_usuario = ?");
 if (!$stmt) {
     die("Error al preparar la consulta: " . $conn->error);
 }
 
-// Cambia "s" por "i" si ID_usuario es numérico
 $stmt->bind_param("s", $user_id); 
 if (!$stmt->execute()) {
     die("Error al ejecutar la consulta: " . $stmt->error);
 }
 
-$stmt->bind_result($monedas);
-
+$stmt->bind_result($monedas, $progreso);
 if (!$stmt->fetch()) {
-    // Mostrar error detallado
-    die("No se encontró el usuario con ID: $user_id o la columna 'monedas' no existe");
+    die("No se encontró el usuario con ID: $user_id");
 }
-
 $stmt->close();
+
+// Definir niveles UK (N061–N070)
+$niveles = [
+    "N071", "N072", "N073", "N074", "N075",
+    "N076", "N077", "N078", "N079", "N080"
+];
+
+// Datos imagen, clase, ancho para cada nivel
+$imagenes = [
+    "N071" => ["arbol", "arbol_08.svg", 300],
+    "N072" => ["arroz", "arroz_08.svg", 300],
+    "N073" => ["dragon", "dragon_08.svg", 210],
+    "N074" => ["flor", "flor_08.svg", 220],
+    "N075" => ["lampara", "lampara_08.svg", 220],
+    "N076" => ["muralla", "muralla_08.svg", 300],
+    "N077" => ["panda", "panda_08.svg", 300],
+    "N078" => ["platon", "platon_08.svg", 300],
+    "N079" => ["sensei", "sensei_08.svg", 300],
+    "N080" => ["templo", "templo_08.svg", 300]
+];
 
 ?>
 
@@ -62,6 +79,13 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mapa China - Educación Matemáticas</title>
     <link rel="stylesheet" href="china.css">
+    <style>
+        .bloqueado img {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -71,7 +95,7 @@ $stmt->close();
             <a href="math-arena.html">arena</a>
             <a href="avatar.html">avatar</a>
             <a href="shop.html">shop</a>
-            <div class="user-icon"><img src="user.svg" alt="User icon"></div>
+            <div class="user-icon"><img src="img/user.svg" alt="User icon"></div>
         </nav>
     </header>
 
@@ -82,7 +106,7 @@ $stmt->close();
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 
-            <!-- Banderas como botones -->
+            <!-- Banderas como botones 
             <a href="../preguntas/level.php?nivel=N071" class="img arbol"><img src="arbol_08.svg" alt="Arbol" ></a>
             <a href="../preguntas/level.php?nivel=N072" class="img arroz"><img src="arroz_08.svg" alt="Arroz"></a>
             <a href="../preguntas/level.php?nivel=N073" class="img dragon"><img src="dragon_08.svg" alt="Dragon" style="width: 210px;"></a>
@@ -94,7 +118,28 @@ $stmt->close();
             <a href="../preguntas/level.php?nivel=N079" class="img sensei"><img src="sensei_08.svg" alt="Sensei"></a>
             <a href="../preguntas/level.php?nivel=N080" class="img templo"><img src="templo_08.svg" alt="Templo"></a>
 
-            <!-- currency -->
+           currency -->
+            <?php
+    foreach ($niveles as $i => $nivel) {
+        // Lógica para desbloquear nivel: progreso debe ser >= 60 + índice
+        $desbloqueado = ($i + 70) <= $progreso;
+
+        $clase = $imagenes[$nivel][0];
+        $src = $imagenes[$nivel][1];
+        $width = $imagenes[$nivel][2];
+        $estilo = $width ? "style='width: {$width}px;'" : "";
+
+        if ($desbloqueado) {
+            echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";
+        } else {
+            echo "<div class='img $clase bloqueado' title='Nivel bloqueado'>";
+        }
+
+        echo "<img src='$src' alt='$clase' $estilo>";
+
+        echo $desbloqueado ? "</a>" : "</div>";
+    }
+    ?>
             <div class="currency">
                 <img src="coin.png" alt="Moneda">
                 <span><?php echo $monedas; ?></span>
