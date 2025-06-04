@@ -47,6 +47,11 @@ if (!$stmt->fetch()) {
 $stmt->close();
 // Definir niveles de Egipto (N041–N050)
 $niveles = [
+    "N041", "N042", "N043", "N044", "N045",
+    "N046", "N047", "N048", "N049", "N050"
+];
+
+$imagenes = [
     "N041" => ["camello", "camello_05.svg", 220],
     "N042" => ["esfinge", "esfinge_05.svg", 230],
     "N043" => ["jarron", "jarron_05.svg", 230],
@@ -94,29 +99,20 @@ $niveles = [
             <img src="img/map_egypt.svg" alt="Mapa de Egipto" class="map_mx">
 
             <?php
-            // Mostrar niveles con desbloqueo según progreso
-            foreach ($niveles as $nivel => $info) {
-                $clase = $info[0];
-                $imagen = $info[1];
-                $width = $info[2];
-
-                // La lógica para desbloquear: el nivel es numérico, ej: N021 -> 21
-                $numNivel = (int)substr($nivel, 1);
-
-                $desbloqueado = $numNivel <= $progreso;
-
-                $estilo = $width > 0 ? "style='width: {$width}px;'" : "";
-
+            foreach ($niveles as $i => $nivel) {
+                $desbloqueado = ($i + 40) <= $progreso; 
+                $clase = $imagenes[$nivel][0];
+                $src = $imagenes[$nivel][1];
+                $width = $imagenes[$nivel][2];
+                $estilo = $width ? "style='width: {$width}px;'" : "";
 
                 if ($desbloqueado) {
                     echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";
-                    echo "<img src='img/$imagen' alt='$clase' style='width: {$width}px;'>";
-                    echo "</a>";
                 } else {
                     echo "<div class='img $clase bloqueado' title='Nivel bloqueado'>";
-                    echo "<img src='img/$imagen' alt='$clase' style='width: {$width}px;'>";
-                    echo "</div>";
                 }
+                echo "<img src='img/$src' alt='$clase' $estilo>";
+                echo $desbloqueado ? "</a>" : "</div>";
             }
             ?>
 
