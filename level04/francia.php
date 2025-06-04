@@ -51,16 +51,21 @@ if (!$stmt->fetch()) {
 $stmt->close();
 
 $niveles = [
-    "N031" => ["torre", "wine.svg", 200],
-    "N032" => ["arco", "arc.svg", 180],
-    "N033" => ["torre", "eiffel.svg", 150],
-    "N034" => ["iglesia", "notredame.svg", 170],
-    "N035" => ["croissant", "crosaint.svg", 160],
-    "N036" => ["bolsa", "louis.svg", 190],
-    "N037" => ["perfume", "dior.svg", 175],
-    "N038" => ["scooter", "scooter.svg", 160],
-    "N039" => ["pan", "baguette.svg", 180],
-    "N040" => ["cupcake", "cupcake.svg", 150]
+    "N031", "N032", "N033", "N034", "N035",
+    "N036", "N037", "N038", "N039", "N040"
+];
+
+$imagenes = [
+    "N031" => ["vino", "wine.svg", 300],
+    "N032" => ["arco", "arc.svg", 300],
+    "N033" => ["torre", "eiffel.svg", 300],
+    "N034" => ["iglesia", "notredame.svg", 300],
+    "N035" => ["croissant", "crosaint.svg", 300],
+    "N036" => ["bolsa", "louis.svg", 300],
+    "N037" => ["perfume", "dior.svg", 300],
+    "N038" => ["scooter", "scooter.svg", 300],
+    "N039" => ["pan", "baguette.svg", 300],
+    "N040" => ["cupcake", "cupcake.svg", 300]
 ];
 
 ?>
@@ -103,29 +108,23 @@ $niveles = [
             <a href="../preguntas/level.php?nivel=N039" class="img pan"><img src="img/baguette.svg" alt="Baguette" style="width: 300px;"></a>
             <a href="../preguntas/level.php?nivel=N040" class="img cupcake"><img src="img/cupcake.svg" alt="Cupcake" style="width: 300px;"></a>-->
             <?php
-            foreach ($niveles as $nivel => $info) {
-                $clase = $info[0];
-                $imagen = $info[1];
-                $width = $info[2];
+            foreach ($niveles as $i => $nivel) {
+                $desbloqueado = ($i + 30) <= $progreso; 
+                $clase = $imagenes[$nivel][0];
+                $src = $imagenes[$nivel][1];
+                $width = $imagenes[$nivel][2];
+                $estilo = $width ? "style='width: {$width}px;'" : "";
 
-
-                $numNivel = (int)substr($nivel, 1);
-                $desbloqueado = $numNivel <= $progreso;
-                $estilo = $width > 0 ? "style='width: {$width}px;'" : "";
-
-
-                
                 if ($desbloqueado) {
                     echo "<a href='../preguntas/level.php?nivel=$nivel' class='img $clase'>";
-                    echo "<img src='img/$imagen' alt='$clase' $estilo>";
-                    echo "</a>";
                 } else {
                     echo "<div class='img $clase bloqueado' title='Nivel bloqueado'>";
-                    echo "<img src='img/$imagen' alt='$clase' $estilo>";
-                    echo "</div>";
                 }
+                echo "<img src='img/$src' alt='$clase' $estilo>";
+                echo $desbloqueado ? "</a>" : "</div>";
             }
             ?>
+
             <div class="currency">
                 <img src="img/coin.png" alt="Moneda">
                 <span><?php echo $monedas; ?></span>
