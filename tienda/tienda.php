@@ -99,42 +99,16 @@ $stmt->close();
   
   <div class="store-container">
   
-    <div class="item">
-      <img src="../items/bag1.svg" alt="Bolsa YSL" data-tipo="bag">
-      <div class="item-details">
-        <h2>Purse YSL</h2>
-        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="1" data-price="120">BUY</button>
-      </div>
-    </div>
-  
-    <div class="item">
-      <img src="../items/items/bag2.svg" alt="Bolsa LV" data-tipo="bag">
-      <div class="item-details">
-        <h2>Purse LV</h2>
-        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="2" data-price="120">BUY</button>
-      </div>
-    </div>
-  
 
-  
-    <div class="item">
-      <img src="../items/items/cup.svg" alt="Stanley" data-tipo="hand">
-      <div class="item-details">
-        <h2>Stanley</h2>/var/www/html/TC2005B_601_1/pisheep/main/
-        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="4" data-price="120">BUY</button>
 
-      </div>
-    </div>
+    <!--SOMBRERPS-->
 
     <div class="item">
       <img src="../items/items/hat1.svg" alt="Sombrero 1" data-tipo="hat">
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="5" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="1" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -143,7 +117,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="6" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="2" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -161,7 +135,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="4" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -170,7 +144,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="5" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -179,7 +153,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="6" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -188,7 +162,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="7" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -197,7 +171,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="8" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -206,7 +180,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="9" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -215,9 +189,119 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="10" data-price="120">BUY</button>
       </div>
     </div>
+
+    <div class="item">
+      <img src="../items/items/hat11.svg" alt="Sombrero 11" data-tipo="hat">
+      <div class="item-details">
+        <h2>Asian Hat</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="11" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hat12.svg" alt="Sombrero 12" data-tipo="hat">
+      <div class="item-details">
+        <h2>Asian Hat</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="12" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hat13.svg" alt="Sombrero 13" data-tipo="hat">
+      <div class="item-details">
+        <h2>Asian Hat</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="13" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hat14.svg" alt="Sombrero 14" data-tipo="hat">
+      <div class="item-details">
+        <h2>Asian Hat</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="14" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hat15.svg" alt="Sombrero 15" data-tipo="hat">
+      <div class="item-details">
+        <h2>Asian Hat</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="15" data-price="120">BUY</button>
+      </div>
+    </div>
+<!--HANDES-->
+    <div class="item">
+      <img src="../items/items/hand1.svg" alt="Stanley" data-tipo="hand">
+      <div class="item-details">
+        <h2>Stanley</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="16" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hand2.svg" alt="Stanley" data-tipo="hand">
+      <div class="item-details">
+        <h2>Stanley</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="17" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hand3.svg" alt="Stanley" data-tipo="hand">
+      <div class="item-details">
+        <h2>Stanley</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="18" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hand4.svg" alt="Stanley" data-tipo="hand">
+      <div class="item-details">
+        <h2>Stanley</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="19" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="../items/items/hand5.svg" alt="Stanley" data-tipo="hand">
+      <div class="item-details">
+        <h2>Stanley</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="20" data-price="120">BUY</button>
+      </div>
+    </div>
+
+    <!--BAG-->
+    <div class="item">
+      <img src="../items/bag1.svg" alt="Bolsa YSL" data-tipo="bag">
+      <div class="item-details">
+        <h2>Purse YSL</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="21" data-price="120">BUY</button>
+      </div>
+    </div>
+  
+    <div class="item">
+      <img src="../items/items/bag2.svg" alt="Bolsa LV" data-tipo="bag">
+      <div class="item-details">
+        <h2>Purse LV</h2>
+        <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
+        <button class="boton_compra" data-id="22" data-price="120">BUY</button>
+      </div>
+    </div>
+  
 
 </body>
 </html>
