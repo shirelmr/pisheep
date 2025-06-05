@@ -123,14 +123,21 @@ margin-right: 0em;
   pointer-events: none; /* Evita que molesten al hacer clic */
 }
 
-#preview-container img.preview-hat {
+/*#preview-container img.preview-hat {
   position: fixed;
   top: 35%;
   left: 59%;
   width: 40%;
   z-index: 999;
   pointer-events: none; 
-
+}*/
+#preview-container img.preview-hat {
+  position: fixed;
+  top: 65%;
+  left: 75%;
+  width: 20%;
+  z-index: 999;
+  pointer-events: none; 
 }
 #preview-container img.preview-bag {
   position: fixed;
