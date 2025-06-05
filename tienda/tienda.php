@@ -134,7 +134,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="5" data-price="120">BUY</button>
       </div>
     </div>
 
@@ -143,7 +143,7 @@ $stmt->close();
       <div class="item-details">
         <h2>Asian Hat</h2>
         <p class="price"><img src="../assets/img/coin.svg" alt="Moneda">120 coins</p> 
-        <button class="boton_compra" data-id="3" data-price="120">BUY</button>
+        <button class="boton_compra" data-id="6" data-price="120">BUY</button>
       </div>
     </div>
 
