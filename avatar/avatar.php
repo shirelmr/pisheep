@@ -101,24 +101,16 @@ function determineItemType($filename, $dbTipo = null) {
     
     // Check database tipo field first (using your enum values)
     if ($dbTipo) {
-        switch($dbTipo) {
-            case 'h': // head items (hats, etc.)
-                return 'head';
-            case 'c': // cuerpo/chest items 
-                return 'hand'; // map to hand category for now
-            case 's': // shoes - could be mapped to a new category or hand
-                return 'hand'; 
-            case 'a': // accessories (bags, purses, etc.)
-                return 'bags';
-        }
+        // Los valores del ENUM ahora coinciden exactamente con las categorías
+        return $dbTipo; // 'hat', 'bag' o 'hand'
     }
     
     // Fallback to filename analysis if tipo is null
     if (strpos($filename, 'hat') !== false || strpos($filename, 'head') !== false) {
-        return 'head';
+        return 'hat';
     } elseif (strpos($filename, 'bag') !== false || strpos($filename, 'purse') !== false) {
-        return 'bags';
-    } elseif (strpos($filename, 'cup') !== false || strpos($filename, 'hand') !== false || strpos($filename, 'chest') !== false) {
+        return 'bag';
+    } elseif (strpos($filename, 'cup') !== false || strpos($filename, 'hand') !== false) {
         return 'hand';
     }
     
@@ -148,10 +140,12 @@ function generateItemName($filename, $itemId) {
 }
 
 // Organize items by type using database data
+
+// Organizar items por tipo usando datos de la base de datos
 $itemsByType = array(
-    'head' => array(),
-    'bags' => array(), 
-    'hand' => array()
+    'hat' => array(),  // Sombreros/gorras
+    'bag' => array(),  // Bolsas/mochilas
+    'hand' => array()  // Objetos para la mano
 );
 
 foreach ($userItems as $item) {
@@ -642,9 +636,9 @@ $conn->close();
             <div class="content-layout">
                 <!-- Controls Column -->
                 <div class="controls">
-                    <button class="control-btn" data-category="head">Head</button>
+                    <button class="control-btn" data-category="head">Hats</button>
                     <button class="control-btn" data-category="bags">Bags</button>
-                    <button class="control-btn" data-category="hand">Body</button>
+                    <button class="control-btn" data-category="hand">Hand</button>
                 </div>
 
                 <!-- Avatar Display -->
@@ -687,8 +681,8 @@ $conn->close();
 
         // Current equipped items
         let currentItems = {
-            head: null,
-            bags: null,
+            hat: null,
+            bag: null,
             hand: null
         };
 
@@ -723,9 +717,10 @@ $conn->close();
             avatarPanel.classList.add('sidebar-open');
             
             // Update sidebar title
+            // Títulos de la sidebar
             const titles = {
-                head: 'Head Items',
-                bags: 'Bags',
+                hat: 'Hats',
+                bag: 'Bags',
                 hand: 'Hand Items'
             };
             sidebarTitle.textContent = titles[category] || 'Items';
