@@ -27,7 +27,7 @@ if ($resultado_pregunta->num_rows > 0) {
     $id_pregunta = $fila["ID_pregunta_ABC"];
     $rutaImagen = $fila["pregunta"];
 
-    echo '<div class="que"><img src="' . $rutaImagen . '" alt="pregunta"></div>';
+    echo '<div class="que"><img src="' . $rutaImagen . '" alt="pregunta" style="height:auto; width:500px; border-radius:10px;"></div>';
 
     // Mostrar opciones
     $sql_opciones = "SELECT opcion_texto, es_correcta FROM Opcion 
@@ -45,7 +45,8 @@ if ($resultado_pregunta->num_rows > 0) {
                 $esCorrecta = $fila["es_correcta"];
                 $clase = $clases_opciones[$indice];
                 echo '<div class="op ' . $clase . '">';
-                echo '<img src="' . $rutaOpcion . '" alt="opcion" data-correcta="' . $esCorrecta . '">';
+                echo '<img src="' . $rutaOpcion . '" alt="opcion" data-correcta="' . $esCorrecta . '" style="width:160px; height:auto;">';
+
                 echo '</div>';
                 $indice++;
             }

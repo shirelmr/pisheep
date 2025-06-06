@@ -6,7 +6,7 @@
   <style>
 body {
     font-family: sans-serif;
-    background: #b5d6d6;
+    background: #ffffff;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@ body {
     width: 100vw;
     height: 100vh;
     min-width: 1100px;
-    background-color:#b5d6d6;
+    background-color:#ffffff;
 }
 
 .op {
@@ -41,16 +41,16 @@ body {
 }
 .que {
     position: absolute;
-    top: 32%;  
+    top: 20%;  
     left: 28%;
     height: 10px;
     width: auto;
 }
 
-.op1 { top: 65%; left: 20%; }
-.op2 { top: 65%; left: 38%; }
-.op3 { top: 65%; left: 55%; }
-.op4 { top: 65%; left: 73%; }
+.op1 { top: 70%; left: 20%; }
+.op2 { top: 70%; left: 38%; }
+.op3 { top: 70%; left: 55%; }
+.op4 { top: 70%; left: 73%; }
 
   </style>
 </head>
