@@ -108,14 +108,14 @@ function determineItemType($filename, $dbTipo = null) {
     // Fallback to filename analysis if tipo is null
     if (strpos($filename, 'hat') !== false || strpos($filename, 'head') !== false) {
         return 'hat';
-    } elseif (strpos($filename, 'bag') !== false || strpos($filename, 'purse') !== false) {
+    } elseif (strpos($filename, 'bag') !== false || strpos($filename, 'bag') !== false) {
         return 'bag';
-    } elseif (strpos($filename, 'cup') !== false || strpos($filename, 'hand') !== false) {
+    } elseif (strpos($filename, 'hand') !== false || strpos($filename, 'hand') !== false) {
         return 'hand';
     }
     
     // Default category
-    return 'bags';
+    return 'bag';
 }
 
 // Function to generate item name from filename
@@ -636,8 +636,8 @@ $conn->close();
             <div class="content-layout">
                 <!-- Controls Column -->
                 <div class="controls">
-                    <button class="control-btn" data-category="head">Hats</button>
-                    <button class="control-btn" data-category="bags">Bags</button>
+                    <button class="control-btn" data-category="hat">Hats</button>
+                    <button class="control-btn" data-category="bag">Bags</button>
                     <button class="control-btn" data-category="hand">Hand</button>
                 </div>
 
@@ -802,12 +802,18 @@ $conn->close();
 
         function selectItem(itemId, category, imageSrc, isNone = false) {
             // Update current items
+            const categoryMap = {
+            'head': 'hat',  // Si data-category="head" en HTML
+            'bags': 'bag',  // Si data-category="bags" en HTML
+            'hand': 'hand'  // Si data-category="hand" en HTML
+             };
             currentItems[category] = isNone ? null : itemId;
-            
+            const realCategory = categoryMap[category] || category;
+
             // Update avatar display
             const avatarElements = {
-                head: document.getElementById('currentHat'),
-                bags: document.getElementById('currentBag'),
+                hat: document.getElementById('currentHat'),
+                bag: document.getElementById('currentBag'),
                 hand: document.getElementById('currentHand')
             };
 
