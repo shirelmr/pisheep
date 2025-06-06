@@ -361,7 +361,7 @@ $conn->close();
         }
 
         .sheep-base {
-            width: 400%;
+            /*width: 400%;*/
             height: 360%;
             z-index: 1;
         }
@@ -372,22 +372,28 @@ $conn->close();
         }
 
         .avatar-item.hat {
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
+            height: 360%;
+
+            /*top: -25px;
+            left: 50%;*/
+            /*transform: translateX(-50%);*/
+            /*width: 150px;*/
         }
 
         .avatar-item.bag {
-            bottom: -50px;
-            right: -30px;
-            width: 230px;
+            /*bottom: -50px;
+            right: -30px;*/
+            /*width: 230px;*/
+            height: 360%;
+
         }
 
         .avatar-item.hand {
-            bottom: 55px;
-            left: -25px;
-            width: 10px;
+            /*bottom: 55px;
+            left: -25px;*/
+            /*width: 10px;*/
+            height: 360%;
+
         }
 
         /* Control Buttons */
@@ -414,6 +420,7 @@ $conn->close();
             width: 160px;
             transition: all 0.1s ease-in-out;
             text-align: center;
+            z-index: 5;
         }
 
         .control-btn:active {
