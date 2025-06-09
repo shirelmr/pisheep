@@ -60,10 +60,9 @@ $niveles = [
         <h1>π sheep</h1>
         <nav>
             <a href="../worldmap.php">home</a>
-            <a href="arena/arena.html">arena</a>
-            <a href="avatar/avatar.html">avatar</a> 
+            <a href="arena/arena.php">arena</a>
+            <a href="avatar/avatar.php">avatar</a> 
             <a href="../tienda/tienda.php">shop</a>
-            <div class="user-icon"><img src="img_level01/user.svg" alt="User icon"></div>
         </nav>
     </header>
 
