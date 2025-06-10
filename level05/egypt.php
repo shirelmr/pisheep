@@ -86,8 +86,8 @@ $imagenes = [
         <h1>π sheep</h1>
         <nav>
             <a href="../worldmap.php">home</a>
-            <a href="../arena/arena.php">arena</a>
-            <a href="../avatar/avatar.php">avatar</a>
+            <a href="../arena/arena.html">arena</a>
+            <a href="../avatar/avatar.php">avatar</a> 
             <a href="../tienda/tienda.php">shop</a>
         </nav>
     </header>

@@ -77,7 +77,6 @@ $stmt->close();
       <a href="../arena/arena.html">arena</a>
       <a href="../avatar/avatar.php">avatar</a>
       <a href="tienda.php">shop</a>
-      <div class="user-icon"><img src="user.svg" alt="User icon"></div>
     </nav>
   </header>
 

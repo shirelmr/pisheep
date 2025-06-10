@@ -138,20 +138,18 @@ margin-right: 0em;
   z-index: 999;
 }
 #preview-container img.preview-bag {
-  position: fixed;
-  top: 65%;
-  left: 75%;
-  width: 20%; /* Tamaño más pequeño */
-  z-index: 999;
+  width: 70%;
   pointer-events: none;
+  top: 25%; left: 45%;
+  z-index: 999;
+
 }
 #preview-container img.preview-hand {
-  position: fixed;
-  top: 65%;
-  left: 75%;
-  width: 20%;
-  z-index: 999;
+  width: 70%;
   pointer-events: none;
+  top: 25%; left: 45%;
+  z-index: 999;
+
 }
 .avatar img[data-tipo="sheep"]{
 width: 70%;
